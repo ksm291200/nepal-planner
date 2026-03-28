@@ -1,0 +1,2331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nepal Trip — Khushi & Aagam</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --forest:       #1B4332;
+    --forest-mid:   #2D6A4F;
+    --forest-light: #B7D9C4;
+    --forest-pale:  #E8F3EC;
+    --saffron:      #C47A1A;
+    --saffron-mid:  #D98C2A;
+    --saffron-light:#FEF2DC;
+    --parchment:    #F6EFE1;
+    --parchment-dk: #EDE4D1;
+    --card:         #FFFCF6;
+    --text:         #1C1208;
+    --text-muted:   #8B7355;
+    --border:       #E4D9C4;
+    --border-light: #EEE6D6;
+    --pokh:         #D2EDDA;
+    --ktm:          #EBD7EF;
+    --flight:       #FCEBD0;
+    --sleep:        #EDE4F9;
+    --red:          #B53418;
+    --green:        #2D6A4F;
+    --shadow:       0 2px 16px rgba(27,67,50,0.09);
+    --shadow-md:    0 4px 24px rgba(27,67,50,0.11);
+    --shadow-lg:    0 12px 40px rgba(27,67,50,0.14);
+    --radius:       14px;
+    --radius-sm:    9px;
+    --font-serif:   'Cormorant Garamond', Georgia, serif;
+    --font-body:    'Outfit', system-ui, sans-serif;
+  }
+
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--parchment);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Parchment noise texture overlay */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.6;
+  }
+  body > * { position: relative; z-index: 1; }
+
+  /* ════════════════════════════════
+     HEADER
+  ════════════════════════════════ */
+  header {
+    background: var(--forest);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 24px rgba(27,67,50,0.35);
+    overflow: hidden;
+  }
+
+  /* Mountain silhouette decoration */
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 36px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 36' preserveAspectRatio='none'%3E%3Cpath d='M0,36 L0,20 L60,8 L120,22 L200,4 L280,18 L360,0 L440,14 L520,6 L600,20 L680,2 L760,16 L840,8 L920,22 L1000,10 L1080,24 L1200,12 L1200,36 Z' fill='rgba(255,255,255,0.04)'/%3E%3C/svg%3E");
+    background-size: 100% 100%;
+    pointer-events: none;
+  }
+
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    position: relative;
+  }
+  .header-left { display: flex; align-items: center; gap: 14px; flex: 1; min-width: 0; }
+  .flag {
+    font-size: 28px; flex-shrink: 0;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.25));
+    animation: flagWave 0.6s ease-out;
+  }
+  @keyframes flagWave {
+    from { transform: scale(0.7) rotate(-10deg); opacity:0; }
+    to   { transform: scale(1) rotate(0deg);     opacity:1; }
+  }
+  .header-title {
+    font-family: var(--font-serif);
+    color: #fff;
+    font-size: 21px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  }
+  .header-sub {
+    color: rgba(255,255,255,0.65);
+    font-size: 12px;
+    margin-top: 2px;
+    white-space: nowrap;
+    font-weight: 300;
+    letter-spacing: 0.3px;
+  }
+  .header-actions { display: flex; gap: 8px; align-items: center; flex-shrink: 0; }
+
+  .btn {
+    font-family: var(--font-body);
+    font-size: 12.5px;
+    font-weight: 500;
+    padding: 8px 18px;
+    border-radius: 24px;
+    border: 1.5px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.22s cubic-bezier(0.34,1.56,0.64,1);
+    display: flex; align-items: center; gap: 6px;
+    white-space: nowrap;
+    -webkit-tap-highlight-color: transparent;
+    letter-spacing: 0.2px;
+  }
+  .btn:hover { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.55); transform: translateY(-1px); }
+  .btn:active { transform: scale(0.96); }
+  .btn-gold { background: var(--saffron); border-color: var(--saffron); }
+  .btn-gold:hover { background: var(--saffron-mid); border-color: var(--saffron-mid); }
+  .btn-danger { background: var(--red); border-color: var(--red); }
+  .btn-danger:hover { background: #9e2e14; }
+
+  /* ════════════════════════════════
+     NAV TABS
+  ════════════════════════════════ */
+  .nav-tabs-wrap { background: var(--forest-mid); }
+  .nav-tabs {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 8px 20px;
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .nav-tabs::-webkit-scrollbar { display: none; }
+  .tab {
+    font-family: var(--font-body);
+    font-size: 12.5px;
+    font-weight: 500;
+    padding: 7px 16px;
+    color: rgba(255,255,255,0.65);
+    cursor: pointer;
+    border-radius: 20px;
+    transition: all 0.2s;
+    white-space: nowrap;
+    flex-shrink: 0;
+    -webkit-tap-highlight-color: transparent;
+    letter-spacing: 0.2px;
+  }
+  .tab:hover { color: rgba(255,255,255,0.92); background: rgba(255,255,255,0.08); }
+  .tab.active {
+    color: var(--forest);
+    background: #fff;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+
+  /* ════════════════════════════════
+     MAIN CONTENT
+  ════════════════════════════════ */
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 32px 24px 80px;
+  }
+
+  .section { display: none; }
+  .section.active { display: block; animation: sectionIn 0.35s cubic-bezier(0.22,1,0.36,1) both; }
+  @keyframes sectionIn {
+    from { opacity:0; transform: translateY(10px); }
+    to   { opacity:1; transform: translateY(0); }
+  }
+
+  /* ════════════════════════════════
+     STATS ROW
+  ════════════════════════════════ */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+  .stat-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .stat-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: linear-gradient(to bottom, var(--saffron), var(--forest-mid));
+  }
+  .stat-label { font-size: 10.5px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 8px; font-weight: 500; }
+  .stat-value { font-family: var(--font-serif); font-size: 26px; font-weight: 600; color: var(--forest); line-height: 1; }
+  .stat-sub { font-size: 12px; color: var(--text-muted); margin-top: 4px; font-weight: 300; }
+
+  /* ════════════════════════════════
+     DAY HEADERS
+  ════════════════════════════════ */
+  .day-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .day-label {
+    font-family: var(--font-serif);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--forest);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    letter-spacing: 0.2px;
+  }
+  .day-badge {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.4px;
+  }
+  .badge-pokh { background: var(--pokh); color: #1B5C2E; }
+  .badge-ktm  { background: var(--ktm);  color: #5B2A82; }
+  .badge-flt  { background: var(--flight); color: #8B4500; }
+
+  /* ════════════════════════════════
+     TIME BLOCK CARDS
+  ════════════════════════════════ */
+  .timeblock-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    margin-bottom: 22px;
+    transition: box-shadow 0.2s;
+  }
+  .timeblock-card:hover { box-shadow: var(--shadow-md); }
+
+  .block-row {
+    display: grid;
+    grid-template-columns: 68px 136px 1fr auto;
+    align-items: start;
+    padding: 13px 16px;
+    border-bottom: 1px solid var(--border-light);
+    gap: 12px;
+    transition: background 0.15s;
+    position: relative;
+  }
+  .block-row:last-child { border-bottom: none; }
+  .block-row:hover { background: var(--forest-pale); }
+  .block-row.dragging { opacity: 0.4; }
+  .block-row.drag-over { border-top: 2px solid var(--forest); }
+  /* Left accent line on hover */
+  .block-row::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--saffron);
+    transform: scaleY(0);
+    transform-origin: center;
+    transition: transform 0.2s;
+    border-radius: 0 2px 2px 0;
+  }
+  .block-row:hover::before { transform: scaleY(1); }
+
+  .block-time {
+    font-family: var(--font-serif);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--forest);
+    padding-top: 3px;
+    letter-spacing: 0.3px;
+  }
+  .block-type {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 6px;
+    width: fit-content;
+    margin-top: 1px;
+    letter-spacing: 0.3px;
+  }
+  .type-flight  { background: var(--flight);    color: #7A3D00; }
+  .type-layover { background: #FFF5DD;           color: #6B4A00; }
+  .type-arrive  { background: var(--forest-pale); color: #1B4332; }
+  .type-hotel   { background: var(--forest-pale); color: #0D4A30; }
+  .type-food    { background: #FFEAEA;           color: #8B1A1A; }
+  .type-walk    { background: #EDF0FC;           color: #2A3595; }
+  .type-temple  { background: #FDE8FF;           color: #6A0080; }
+  .type-view    { background: #E0F5FA;           color: #006070; }
+  .type-cafe    { background: #FFF8E0;           color: #7A4D00; }
+  .type-shop    { background: #F3E5F5;           color: #5B0080; }
+  .type-rest    { background: var(--sleep);      color: #4A0080; }
+  .type-cable   { background: #EDF0FC;           color: #1A2070; }
+  .type-cook    { background: #F1F8E8;           color: #1B5000; }
+  .type-pack    { background: var(--sleep);      color: #4A0080; }
+  .type-default { background: #F2EEE8;           color: #4A3A2A; }
+
+  .block-content { min-width: 0; }
+  .block-activity { font-size: 14px; font-weight: 400; color: var(--text); line-height: 1.5; }
+  .block-note {
+    font-size: 12.5px; color: var(--text-muted); margin-top: 4px;
+    font-style: italic; line-height: 1.45;
+    font-family: var(--font-serif);
+  }
+
+  .block-actions {
+    display: flex;
+    gap: 4px;
+    opacity: 0;
+    transition: opacity 0.15s;
+    flex-shrink: 0;
+    padding-top: 1px;
+  }
+  .block-row:hover .block-actions { opacity: 1; }
+
+  .icon-btn {
+    width: 30px; height: 30px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px;
+    transition: all 0.15s;
+    color: var(--text-muted);
+    -webkit-tap-highlight-color: transparent;
+  }
+  .icon-btn:hover { background: var(--parchment-dk); color: var(--text); }
+  .icon-btn.del:hover { background: #FEEAE6; border-color: #F5C6BF; color: var(--red); }
+  .icon-btn.drag-handle { cursor: grab; }
+  .icon-btn.drag-handle:active { cursor: grabbing; }
+
+  /* ════════════════════════════════
+     ADD BLOCK BUTTON
+  ════════════════════════════════ */
+  .add-block-btn {
+    width: 100%;
+    padding: 11px;
+    border: 1.5px dashed var(--forest-light);
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--forest-mid);
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 4px;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .add-block-btn:hover { background: var(--forest-pale); border-color: var(--forest-mid); border-style: solid; }
+
+  /* ════════════════════════════════
+     MODAL
+  ════════════════════════════════ */
+  .modal-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(27,20,10,0.55);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .modal-backdrop.open { display: flex; animation: backdropIn 0.2s ease; }
+  @keyframes backdropIn { from { opacity:0; } to { opacity:1; } }
+
+  .modal {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 30px;
+    width: 100%;
+    max-width: 480px;
+    box-shadow: var(--shadow-lg);
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: modalIn 0.25s cubic-bezier(0.22,1,0.36,1);
+    border: 1px solid var(--border);
+  }
+  @keyframes modalIn {
+    from { opacity:0; transform: scale(0.95) translateY(8px); }
+    to   { opacity:1; transform: scale(1) translateY(0); }
+  }
+  .modal h3 {
+    font-family: var(--font-serif);
+    font-size: 21px;
+    color: var(--forest);
+    margin-bottom: 22px;
+    letter-spacing: 0.2px;
+  }
+  .form-row { margin-bottom: 16px; }
+  .form-row label {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+  .form-row input, .form-row select, .form-row textarea {
+    width: 100%;
+    padding: 10px 13px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--text);
+    background: var(--parchment);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    -webkit-appearance: none;
+  }
+  .form-row input:focus, .form-row select:focus, .form-row textarea:focus {
+    border-color: var(--forest);
+    box-shadow: 0 0 0 3px rgba(27,67,50,0.1);
+    background: var(--card);
+  }
+  .form-row textarea { resize: vertical; min-height: 75px; }
+
+  .modal-actions { display: flex; gap: 10px; margin-top: 22px; justify-content: flex-end; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--forest);
+    color: #fff;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 24px;
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.34,1.56,0.64,1);
+    letter-spacing: 0.2px;
+  }
+  .btn-primary:hover { background: var(--forest-mid); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(27,67,50,0.25); }
+  .btn-secondary {
+    background: transparent;
+    color: var(--text-muted);
+    border: 1.5px solid var(--border);
+    padding: 10px 22px;
+    border-radius: 24px;
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-secondary:hover { background: var(--parchment-dk); color: var(--text); border-color: var(--border); }
+
+  /* ════════════════════════════════
+     FOOD GUIDE
+  ════════════════════════════════ */
+  .food-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(285px, 1fr));
+    gap: 16px;
+    margin-bottom: 30px;
+  }
+  .food-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px;
+    box-shadow: var(--shadow);
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+    overflow: hidden;
+  }
+  .food-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--forest), var(--saffron));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .food-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+  .food-card:hover::after { transform: scaleX(1); }
+
+  .food-card .fc-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; margin-bottom: 9px; }
+  .food-card .fc-name { font-family: var(--font-serif); font-weight: 600; font-size: 17px; color: var(--text); letter-spacing: 0.2px; }
+  .food-card .fc-city { font-size: 11px; padding: 3px 10px; border-radius: 20px; font-weight: 500; flex-shrink: 0; }
+  .city-pokh { background: var(--pokh); color: #1B5C2E; }
+  .city-ktm  { background: var(--ktm);  color: #5B2A82; }
+  .food-card .fc-type { font-size: 12px; color: var(--text-muted); margin-bottom: 9px; }
+  .food-card .fc-order { font-size: 13px; color: var(--text); margin-bottom: 5px; line-height: 1.5; }
+  .food-card .fc-order strong { color: var(--forest); font-weight: 600; }
+  .food-card .fc-note { font-size: 12px; color: var(--text-muted); font-style: italic; font-family: var(--font-serif); line-height: 1.5; }
+  .food-card .food-del {
+    position: absolute; top: 12px; right: 12px;
+    opacity: 0; transition: opacity 0.15s;
+  }
+  .food-card:hover .food-del { opacity: 1; }
+  .tick-btn {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border);
+    background: transparent;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px;
+    transition: all 0.2s cubic-bezier(0.34,1.56,0.64,1);
+    flex-shrink: 0;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .tick-btn.ticked { background: var(--green); border-color: var(--green); color: #fff; transform: scale(1.1); }
+
+  /* ════════════════════════════════
+     TIPS & APPS
+  ════════════════════════════════ */
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
+    gap: 14px;
+    margin-bottom: 26px;
+  }
+  .tip-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 15px 17px;
+    box-shadow: var(--shadow);
+    display: flex;
+    gap: 13px;
+    align-items: flex-start;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .tip-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+  .tip-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+  .tip-title { font-size: 13.5px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+  .tip-desc { font-size: 12.5px; color: var(--text-muted); line-height: 1.55; }
+
+  /* ════════════════════════════════
+     BUDGET
+  ════════════════════════════════ */
+  .budget-section { margin-bottom: 30px; }
+  .mobile-detail { display: none; }
+  .col-detail { /* visible on desktop only */ }
+  .budget-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: var(--radius); }
+  .budget-table {
+    width: 100%;
+    min-width: 500px;
+    border-collapse: collapse;
+    background: var(--card);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+  }
+  .budget-table th {
+    background: var(--forest);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 13px 16px;
+    text-align: left;
+    white-space: nowrap;
+  }
+  .budget-table th:last-child, .budget-table td:last-child { text-align: right; }
+  .budget-table td {
+    padding: 12px 16px;
+    font-size: 13.5px;
+    border-bottom: 1px solid var(--border-light);
+    color: var(--text);
+    vertical-align: top;
+  }
+  .budget-table tr:last-child td { border-bottom: none; }
+  .budget-table tr:nth-child(even) td { background: var(--parchment); }
+  .budget-total td { background: var(--saffron-light) !important; font-weight: 600; font-size: 14px; }
+  .budget-total td:last-child { color: var(--red); font-family: var(--font-serif); font-size: 17px; }
+
+  /* ════════════════════════════════
+     SECTION TITLES
+  ════════════════════════════════ */
+  .section-title {
+    font-family: var(--font-serif);
+    font-size: 26px;
+    color: var(--forest);
+    margin-bottom: 6px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .section-sub { font-size: 13.5px; color: var(--text-muted); margin-bottom: 22px; font-weight: 300; }
+  .subsection-title {
+    font-family: var(--font-serif);
+    font-size: 18px;
+    color: var(--forest);
+    margin: 28px 0 16px;
+    padding-bottom: 9px;
+    border-bottom: 1.5px solid var(--border);
+    font-weight: 600;
+    letter-spacing: 0.2px;
+  }
+
+  /* ════════════════════════════════
+     TOAST
+  ════════════════════════════════ */
+  .toast {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    background: var(--forest);
+    color: #fff;
+    padding: 12px 22px;
+    border-radius: 24px;
+    font-size: 13.5px;
+    font-weight: 500;
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    transform: translateY(12px) scale(0.96);
+    transition: all 0.28s cubic-bezier(0.22,1,0.36,1);
+    z-index: 9999;
+    pointer-events: none;
+    max-width: calc(100vw - 40px);
+    letter-spacing: 0.2px;
+  }
+  .toast.show { opacity: 1; transform: translateY(0) scale(1); }
+
+  /* ════════════════════════════════
+     DONE PILL
+  ════════════════════════════════ */
+  .done-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    padding: 2px 9px;
+    border-radius: 20px;
+    background: var(--forest-pale);
+    color: var(--forest);
+    font-weight: 500;
+    margin-left: 8px;
+  }
+
+  /* ════════════════════════════════
+     PACKING
+  ════════════════════════════════ */
+  .pack-person-tabs { display: flex; gap: 10px; margin-bottom: 26px; flex-wrap: wrap; }
+  .pack-person-btn {
+    font-family: var(--font-body); font-size: 14px; font-weight: 500;
+    padding: 11px 28px; border-radius: 28px; border: 2px solid var(--border);
+    background: var(--card); color: var(--text-muted); cursor: pointer; transition: all 0.22s;
+    -webkit-tap-highlight-color: transparent;
+    letter-spacing: 0.2px;
+  }
+  .pack-person-btn.active { background: var(--forest); color: #fff; border-color: var(--forest); box-shadow: 0 4px 14px rgba(27,67,50,0.22); }
+  .pack-person-btn:not(.active):hover { border-color: var(--forest); color: var(--forest); background: var(--forest-pale); }
+
+  .pack-bag-section { margin-bottom: 34px; }
+  .pack-bag-header {
+    display: flex; align-items: center; justify-content: space-between;
+    background: linear-gradient(135deg, var(--forest) 0%, var(--forest-mid) 100%);
+    color: #fff;
+    border-radius: var(--radius) var(--radius) 0 0;
+    padding: 16px 20px;
+  }
+  .pack-bag-title { font-family: var(--font-serif); font-size: 18px; font-weight: 600; display: flex; align-items: center; gap: 9px; letter-spacing: 0.3px; }
+  .pack-bag-count { font-size: 12px; opacity: 0.7; margin-top: 3px; font-weight: 300; }
+
+  .pack-category { background: var(--card); border: 1px solid var(--border); border-top: none; }
+  .pack-category:last-child { border-radius: 0 0 var(--radius) var(--radius); }
+
+  .pack-cat-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 11px 18px; background: var(--parchment); border-bottom: 1px solid var(--border-light);
+    cursor: pointer; user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: background 0.15s;
+  }
+  .pack-cat-header:hover { background: var(--forest-pale); }
+  .pack-cat-name { font-size: 13.5px; font-weight: 600; color: var(--forest); display: flex; align-items: center; gap: 7px; }
+  .pack-cat-chevron { font-size: 11px; color: var(--text-muted); transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1); }
+  .pack-cat-chevron.open { transform: rotate(180deg); }
+  .pack-cat-actions { display: flex; gap: 6px; align-items: center; }
+  .pack-cat-count { font-size: 11px; color: var(--text-muted); background: var(--card); padding: 2px 9px; border-radius: 20px; border: 1px solid var(--border); }
+
+  .pack-items { padding: 4px 0; display: none; }
+  .pack-items.open { display: block; }
+  .pack-item {
+    display: flex; align-items: center; gap: 11px;
+    padding: 11px 18px; border-bottom: 1px solid var(--border-light);
+    transition: background 0.15s;
+    min-height: 46px;
+  }
+  .pack-item:last-child { border-bottom: none; }
+  .pack-item:hover { background: var(--forest-pale); }
+  .pack-item:hover .pack-item-del { opacity: 1; }
+  .pack-check {
+    width: 20px; height: 20px; border-radius: 5px; border: 1.5px solid var(--border);
+    background: transparent; cursor: pointer; flex-shrink: 0;
+    transition: all 0.22s cubic-bezier(0.34,1.56,0.64,1);
+    display: flex; align-items: center; justify-content: center; font-size: 12px; color: #fff;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .pack-check.checked { background: var(--green); border-color: var(--green); transform: scale(1.05); }
+  .pack-item-name { font-size: 14px; color: var(--text); flex: 1; transition: color 0.2s; }
+  .pack-item-name.checked { color: var(--text-muted); text-decoration: line-through; }
+  .pack-item-del { opacity: 0; transition: opacity 0.15s; }
+
+  .pack-add-item {
+    display: flex; gap: 9px; padding: 11px 16px; border-top: 1px solid var(--border-light);
+    background: var(--parchment);
+  }
+  .pack-add-item input {
+    flex: 1; padding: 9px 12px; border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+    font-family: var(--font-body); font-size: 13.5px; color: var(--text); outline: none;
+    background: var(--card); min-width: 0; transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .pack-add-item input:focus { border-color: var(--forest); box-shadow: 0 0 0 3px rgba(27,67,50,0.1); }
+  .pack-add-item button {
+    padding: 9px 16px; border-radius: var(--radius-sm); border: none;
+    background: var(--forest); color: #fff; font-family: var(--font-body);
+    font-size: 13px; font-weight: 500; cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.34,1.56,0.64,1);
+    flex-shrink: 0;
+  }
+  .pack-add-item button:hover { background: var(--forest-mid); transform: scale(1.03); }
+
+  /* ════════════════════════════════
+     NOTES
+  ════════════════════════════════ */
+  .notes-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+    align-items: start;
+  }
+  .notes-col {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .notes-col-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 13px 18px;
+    background: linear-gradient(135deg, var(--forest), var(--forest-mid));
+    color: #fff;
+    font-family: var(--font-serif);
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+  }
+  .notes-saved-indicator { font-size: 11px; font-weight: 400; opacity: 0.7; font-family: var(--font-body); }
+  .notes-textarea {
+    width: 100%;
+    min-height: 320px;
+    padding: 16px 18px;
+    border: none;
+    outline: none;
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--text);
+    background: var(--card);
+    resize: vertical;
+    line-height: 1.65;
+  }
+  .day-note-item { border-bottom: 1px solid var(--border-light); }
+  .day-note-item:last-child { border-bottom: none; }
+  .day-note-label {
+    padding: 10px 16px 4px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--forest);
+  }
+  .day-note-textarea {
+    width: 100%;
+    padding: 4px 16px 13px;
+    border: none;
+    outline: none;
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--text);
+    background: transparent;
+    resize: none;
+    line-height: 1.65;
+    min-height: 56px;
+  }
+  .day-note-textarea:focus { background: var(--forest-pale); }
+
+  /* ════════════════════════════════
+     TABLET — 601px to 900px
+  ════════════════════════════════ */
+  @media (min-width: 601px) and (max-width: 900px) {
+    .stats-row { grid-template-columns: repeat(2, 1fr); }
+    .food-grid { grid-template-columns: repeat(2, 1fr); }
+    .tips-grid { grid-template-columns: repeat(2, 1fr); }
+    .notes-layout { grid-template-columns: 1fr; }
+    .notes-textarea { min-height: 200px; }
+    main { padding: 22px 20px 72px; }
+  }
+
+  /* ════════════════════════════════
+     MOBILE — max 600px
+  ════════════════════════════════ */
+  @media (max-width: 600px) {
+
+    .header-inner { padding: 10px 14px; gap: 6px; flex-direction: column; align-items: stretch; }
+    .header-left { gap: 10px; }
+    .header-title { font-size: 17px; white-space: normal; }
+    .header-sub { font-size: 11px; white-space: normal; }
+    .flag { font-size: 22px; }
+    .header-actions { gap: 6px; width: 100%; justify-content: flex-end; }
+    .btn { font-size: 12px; padding: 7px 13px; }
+
+    .nav-tabs { padding: 6px 10px; }
+    .tab { font-size: 12px; padding: 6px 12px; }
+
+    main { padding: 16px 12px 80px; }
+
+    .stats-row { grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+    .stat-card { padding: 13px 14px; }
+    .stat-value { font-size: 22px; }
+    .stat-sub { font-size: 11px; }
+
+    .day-label { font-size: 17px; }
+    .day-header { margin-bottom: 10px; }
+
+    .block-row {
+      display: flex; flex-direction: column;
+      gap: 5px; padding: 12px 14px; align-items: flex-start;
+    }
+    .block-time { font-size: 12px; }
+    .block-activity { font-size: 13px; }
+    .block-note { font-size: 12px; }
+    .block-actions { opacity: 1; align-self: flex-end; margin-top: 2px; }
+
+    .food-grid { grid-template-columns: 1fr; gap: 12px; }
+    .food-card .food-del { opacity: 1; }
+    .tick-btn { width: 28px; height: 28px; font-size: 13px; }
+
+    .tips-grid { grid-template-columns: 1fr; gap: 11px; }
+
+    .budget-section { margin-bottom: 20px; }
+    .budget-table-wrap { border-radius: var(--radius-sm); overflow-x: visible; }
+    .col-detail { display: none; }
+    .mobile-detail {
+      display: block; font-size: 11px; color: var(--text-muted);
+      font-weight: 400; margin-top: 2px; white-space: normal; line-height: 1.4;
+    }
+    .budget-table { min-width: unset !important; width: 100%; }
+    .budget-table th { font-size: 10px; padding: 9px 8px; letter-spacing: 0.2px; white-space: nowrap; }
+    .budget-table td { font-size: 12px; padding: 9px 8px; }
+    .budget-total td { font-size: 12px !important; }
+    .budget-total td:last-child { font-size: 14px !important; }
+    #variable-table .icon-btn.del { opacity: 1; }
+
+    .subsection-title.budget-var-title { flex-direction: column !important; align-items: flex-start !important; }
+    .subsection-title.budget-var-title .btn-primary { width: 100%; justify-content: center; box-sizing: border-box; }
+
+    .modal-backdrop { padding: 0; align-items: flex-end; }
+    .modal { border-radius: var(--radius) var(--radius) 0 0; max-height: 88vh; padding: 22px 16px 30px; }
+    .modal-actions { justify-content: stretch; }
+    .modal-actions .btn-primary, .modal-actions .btn-secondary { flex: 1; justify-content: center; }
+
+    .pack-person-btn { padding: 9px 20px; font-size: 13px; }
+    .pack-item-del { opacity: 1; }
+    .pack-item { min-height: 48px; }
+
+    .section-title { font-size: 21px; }
+    .subsection-title { font-size: 16px; }
+
+    .notes-layout { grid-template-columns: 1fr; gap: 14px; }
+    .notes-textarea { min-height: 200px; }
+
+    .toast { bottom: 18px; right: 12px; left: 12px; text-align: center; border-radius: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="header-left">
+      <span class="flag">🇳🇵</span>
+      <div>
+        <div class="header-title">Nepal — April 1–7, 2026</div>
+        <div class="header-sub">Khushi &amp; Aagam &nbsp;·&nbsp; Pokhara → Kathmandu</div>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button class="btn" onclick="openAddRestaurant()">＋ Restaurant</button>
+      <button class="btn btn-gold" onclick="openAddBlock()">＋ Add Block</button>
+    </div>
+  </div>
+  <div class="nav-tabs">
+    <div class="tab active" onclick="showSection('itinerary', this)">📅 Itinerary</div>
+    <div class="tab" onclick="showSection('food', this)">🍽️ Food Guide</div>
+    <div class="tab" onclick="showSection('budget', this)">💰 Budget</div>
+    <div class="tab" onclick="showSection('tips', this)">📱 Apps &amp; Tips</div>
+    <div class="tab" onclick="showSection('packing', this)">🧳 Packing</div>
+    <div class="tab" onclick="showSection('notes', this)">📝 Notes</div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ═══ ITINERARY SECTION ═══ -->
+  <section class="section active" id="s-itinerary">
+    <div class="stats-row" id="stats-row">
+      <div class="stat-card"><div class="stat-label">Trip</div><div class="stat-value">7 Days</div><div class="stat-sub">Apr 1–7, 2026</div></div>
+      <div class="stat-card"><div class="stat-label">Cities</div><div class="stat-value">2</div><div class="stat-sub">Pokhara + KTM</div></div>
+      <div class="stat-card"><div class="stat-label">Travellers</div><div class="stat-value">2</div><div class="stat-sub">Khushi & Aagam</div></div>
+      <div class="stat-card"><div class="stat-label">Nights</div><div class="stat-value">6</div><div class="stat-sub">2 PKR + 4 KTM</div></div>
+    </div>
+    <div id="itinerary-container"></div>
+  </section>
+
+  <!-- ═══ FOOD SECTION ═══ -->
+  <section class="section" id="s-food">
+    <div class="section-title">Food Guide</div>
+    <div class="section-sub">All restaurants + must-try dishes. Tap ✓ to mark as visited.</div>
+    <div class="food-grid" id="food-grid"></div>
+    <div class="subsection-title">Must-Try Native Dishes</div>
+    <div class="food-grid" id="dishes-grid"></div>
+  </section>
+
+  <!-- ═══ BUDGET SECTION ═══ -->
+  <section class="section" id="s-budget">
+    <div class="section-title">Budget Breakdown</div>
+    <div class="section-sub">Pre-paid costs + live variable spend tracker for 2 people.</div>
+
+    <div class="subsection-title">Fixed Costs — Pre-paid &amp; Confirmed</div>
+    <div class="budget-table-wrap"><table class="budget-table budget-fixed">
+      <thead><tr><th>Category</th><th class="col-detail">Detail</th><th>Per Person</th><th>For 2</th></tr></thead>
+      <tbody>
+        <tr>
+          <td data-label="Category">✈ IndiGo Flights<span class="mobile-detail">HYD↔KTM via DEL · PNR: RE52JK</span></td>
+          <td class="col-detail">HYD↔KTM via DEL · PNR: RE52JK · Travel insurance incl.</td>
+          <td data-label="Per Person">₹39,105</td>
+          <td data-label="For 2">₹78,210</td>
+        </tr>
+        <tr>
+          <td data-label="Category">✈ Yeti Airlines<span class="mobile-detail">KTM↔PKR · PNR: A6F0IH</span></td>
+          <td class="col-detail">KTM↔PKR round trip · PNR: A6F0IH</td>
+          <td data-label="Per Person">₹7,091</td>
+          <td data-label="For 2">₹14,182</td>
+        </tr>
+        <tr>
+          <td data-label="Category">🏨 Himalayan Front<span class="mobile-detail">Pokhara — 2 nights</span></td>
+          <td class="col-detail">Pokhara — 2 nights</td>
+          <td data-label="Per Person" style="color:var(--text-muted);font-style:italic;">shared</td>
+          <td data-label="For 2">₹21,634</td>
+        </tr>
+        <tr>
+          <td data-label="Category">🏨 Moxy Kathmandu<span class="mobile-detail">Kathmandu — 4 nights</span></td>
+          <td class="col-detail">Kathmandu — 4 nights</td>
+          <td data-label="Per Person" style="color:var(--text-muted);font-style:italic;">shared</td>
+          <td data-label="For 2">₹35,071</td>
+        </tr>
+        <tr class="budget-total"><td colspan="3" class="col-3-span">Fixed Subtotal</td><td id="fixed-subtotal">₹1,49,097</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="subsection-title budget-var-title" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">
+      <span>Variable Costs — Live Tracker</span>
+      <button class="btn-primary" onclick="openAddExpense()" style="font-size:12px;padding:8px 16px;border-radius:20px;">＋ Add Expense</button>
+    </div>
+
+    <div class="budget-table-wrap">
+      <table class="budget-table" id="variable-table">
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th style="text-align:right;">Amount (₹)</th>
+            <th style="text-align:center;width:40px;"></th>
+          </tr>
+        </thead>
+        <tbody id="variable-tbody">
+          <!-- rows rendered by JS -->
+        </tbody>
+        <tfoot>
+          <tr class="budget-total">
+            <td>Variable Subtotal</td>
+            <td id="variable-subtotal" style="text-align:right;">₹0</td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <div id="variable-empty" style="display:none;text-align:center;padding:32px 20px;color:var(--text-muted);font-size:13px;font-style:italic;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);margin-top:0;">
+      No variable expenses yet. Tap <strong>＋ Add Expense</strong> to start tracking.
+    </div>
+
+    <div class="subsection-title">Grand Total</div>
+    <div class="budget-table-wrap"><table class="budget-table">
+      <tbody>
+        <tr class="budget-total">
+          <td style="font-size:14px;">🧾 Grand Total · 2 People · 7 Days</td>
+          <td style="font-size:18px;font-family:var(--font-serif);color:var(--red);text-align:right;white-space:nowrap;" id="grand-total">₹1,49,097</td>
+        </tr>
+        <tr>
+          <td colspan="2" style="color:var(--text-muted);font-size:12px;font-style:italic;">
+            Airline costs shown for both people (same fare assumed for Aagam). Variable costs update live as you add expenses.
+          </td>
+        </tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <!-- Add Expense Modal -->
+  <div class="modal-backdrop" id="add-expense-modal">
+    <div class="modal">
+      <h3>Add Variable Expense</h3>
+      <div class="form-row">
+        <label>Category</label>
+        <select id="exp-category">
+          <option value="🍽️ Food &amp; Drinks">🍽️ Food &amp; Drinks</option>
+          <option value="🚕 Local Transport">🚕 Local Transport</option>
+          <option value="🎟️ Entry Tickets">🎟️ Entry Tickets</option>
+          <option value="🛍️ Shopping">🛍️ Shopping</option>
+          <option value="🧑‍🍳 Activities / Experiences">🧑‍🍳 Activities / Experiences</option>
+          <option value="📱 SIM / Data">📱 SIM / Data</option>
+          <option value="💊 Misc / Buffer">💊 Misc / Buffer</option>
+          <option value="☕ Cafes &amp; Snacks">☕ Cafes &amp; Snacks</option>
+          <option value="💆 Spa / Wellness">💆 Spa / Wellness</option>
+          <option value="📸 Photography / Misc">📸 Photography / Misc</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label>Detail / Description</label>
+        <input type="text" id="exp-detail" placeholder="e.g. Dinner at OR2K, Kathmandu" />
+      </div>
+      <div class="form-row">
+        <label>Amount (INR ₹)</label>
+        <input type="number" id="exp-amount" placeholder="e.g. 1200" min="0" step="1" />
+      </div>
+      <div class="modal-actions">
+        <button class="btn-secondary" onclick="closeModal('add-expense-modal')">Cancel</button>
+        <button class="btn-primary" onclick="saveExpense()">Add Expense</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ TIPS SECTION ═══ -->
+  <section class="section" id="s-tips">
+    <div class="section-title">Apps &amp; Tips</div>
+    <div class="section-sub">Download before you fly — some won't install well on roaming data.</div>
+
+    <div class="subsection-title">Apps to Download</div>
+    <div class="tips-grid" id="apps-grid"></div>
+
+    <div class="subsection-title">Things to Look Out For</div>
+    <div class="tips-grid" id="watchouts-grid"></div>
+  </section>
+
+  <!-- ═══ PACKING SECTION ═══ -->
+  <section class="section" id="s-packing">
+    <div class="section-title">Packing List</div>
+    <div class="section-sub">Track what goes in carry-on vs checked luggage. Add subcategories like pouches or kits.</div>
+
+    <!-- Person toggle -->
+    <div class="pack-person-tabs">
+      <button class="pack-person-btn active" id="ppb-khushi" onclick="switchPacker('khushi')">👩 Khushi</button>
+      <button class="pack-person-btn" id="ppb-aagam" onclick="switchPacker('aagam')">👨 Aagam</button>
+    </div>
+
+    <div id="packing-container"></div>
+
+    <!-- Add subcategory button row -->
+    <div style="display:flex;gap:10px;margin-top:8px;flex-wrap:wrap;">
+      <button class="add-block-btn" style="flex:1;min-width:200px;" onclick="openAddCategory('carryon')">＋ Add subcategory to Carry-on</button>
+      <button class="add-block-btn" style="flex:1;min-width:200px;" onclick="openAddCategory('luggage')">＋ Add subcategory to Luggage</button>
+    </div>
+  </section>
+
+
+  <!-- ═══ NOTES SECTION ═══ -->
+  <section class="section" id="s-notes">
+    <div class="section-title">Notes</div>
+    <div class="section-sub">Shared notes synced across devices. Jot ideas, reminders, anything.</div>
+
+    <div class="notes-layout">
+      <!-- General scratchpad -->
+      <div class="notes-col">
+        <div class="notes-col-header">
+          <span>📋 General Scratchpad</span>
+          <span class="notes-saved-indicator" id="notes-saved-general"></span>
+        </div>
+        <textarea class="notes-textarea" id="notes-general" placeholder="Anything goes — ideas, reminders, links, random thoughts..." oninput="saveNote('general')"></textarea>
+      </div>
+
+      <!-- Per-day notes -->
+      <div class="notes-col">
+        <div class="notes-col-header">
+          <span>📅 Day Notes</span>
+        </div>
+        <div id="day-notes-container"></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ═══ ADD BLOCK MODAL ═══ -->
+<div class="modal-backdrop" id="add-block-modal">
+  <div class="modal">
+    <h3 id="modal-title">Add a Time Block</h3>
+    <div class="form-row">
+      <label>Day</label>
+      <select id="f-day"></select>
+    </div>
+    <div class="form-row">
+      <label>Time (e.g. 14:30)</label>
+      <input type="text" id="f-time" placeholder="14:30">
+    </div>
+    <div class="form-row">
+      <label>Block Type</label>
+      <select id="f-type">
+        <option value="food">🍽️ Food / Meal</option>
+        <option value="temple">🛕 Temple / Heritage</option>
+        <option value="view">🌅 Viewpoint</option>
+        <option value="walk">🚶 Walk / Explore</option>
+        <option value="cafe">☕ Café</option>
+        <option value="shop">🛍️ Shopping</option>
+        <option value="hotel">🏨 Hotel</option>
+        <option value="flight">✈️ Flight</option>
+        <option value="layover">🔄 Layover</option>
+        <option value="arrive">🛬 Arrive</option>
+        <option value="rest">😴 Rest</option>
+        <option value="cook">🧑‍🍳 Cooking Class</option>
+        <option value="cable">🚠 Cable Car</option>
+        <option value="pack">🧳 Pack / Checkout</option>
+        <option value="default">📌 Other</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <label>Activity / Description</label>
+      <textarea id="f-activity" placeholder="What are you doing?"></textarea>
+    </div>
+    <div class="form-row">
+      <label>Notes / Tips (optional)</label>
+      <input type="text" id="f-note" placeholder="Any extra info">
+    </div>
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="closeModal('add-block-modal')">Cancel</button>
+      <button class="btn-primary" onclick="saveBlock()">Save Block</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ ADD RESTAURANT MODAL ═══ -->
+<div class="modal-backdrop" id="add-restaurant-modal">
+  <div class="modal">
+    <h3>Add a Restaurant</h3>
+    <div class="form-row">
+      <label>Restaurant Name</label>
+      <input type="text" id="r-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+      <label>City</label>
+      <select id="r-city">
+        <option value="Pokhara">Pokhara</option>
+        <option value="Kathmandu">Kathmandu</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <label>Day</label>
+      <select id="r-day">
+        <option>Day 1</option><option>Day 2</option><option>Day 3</option>
+        <option>Day 4</option><option>Day 5</option><option>Day 6</option><option>Day 7</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <label>Type (e.g. Café, Street food)</label>
+      <input type="text" id="r-type" placeholder="Type">
+    </div>
+    <div class="form-row">
+      <label>Must Order</label>
+      <input type="text" id="r-order" placeholder="What to order">
+    </div>
+    <div class="form-row">
+      <label>Notes</label>
+      <input type="text" id="r-note" placeholder="Extra info">
+    </div>
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="closeModal('add-restaurant-modal')">Cancel</button>
+      <button class="btn-primary" onclick="saveRestaurant()">Add Restaurant</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ ADD PACKING ITEM MODAL ═══ -->
+<div class="modal-backdrop" id="add-pack-item-modal">
+  <div class="modal">
+    <h3>Add Item</h3>
+    <div class="form-row">
+      <label>Item Name</label>
+      <input type="text" id="pi-name" placeholder="e.g. Sunscreen SPF 50">
+    </div>
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="closeModal('add-pack-item-modal')">Cancel</button>
+      <button class="btn-primary" onclick="savePackItem()">Add Item</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ ADD PACKING CATEGORY MODAL ═══ -->
+<div class="modal-backdrop" id="add-pack-cat-modal">
+  <div class="modal">
+    <h3>Add Subcategory</h3>
+    <div class="form-row">
+      <label>Category Name</label>
+      <input type="text" id="pc-name" placeholder="e.g. Makeup Pouch, Medicines">
+    </div>
+    <div class="form-row">
+      <label>Emoji (optional)</label>
+      <input type="text" id="pc-emoji" placeholder="💄" maxlength="2" style="max-width:80px;">
+    </div>
+    <div class="modal-actions">
+      <button class="btn-secondary" onclick="closeModal('add-pack-cat-modal')">Cancel</button>
+      <button class="btn-primary" onclick="savePackCategory()">Add Category</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+
+<script>
+// ═══════════════════════════════════════════════════════════════
+// DEFAULT DATA
+// ═══════════════════════════════════════════════════════════════
+const DEFAULT_DAYS = [
+  { id:'d1', label:'Day 1', date:'Tue, Apr 1', city:'✈ HYD → PKR', badge:'flt' },
+  { id:'d2', label:'Day 2', date:'Wed, Apr 2', city:'Pokhara',      badge:'pokh' },
+  { id:'d3', label:'Day 3', date:'Thu, Apr 3', city:'PKR → KTM',   badge:'flt' },
+  { id:'d4', label:'Day 4', date:'Fri, Apr 4', city:'Kathmandu',    badge:'ktm' },
+  { id:'d5', label:'Day 5', date:'Sat, Apr 5', city:'Kathmandu',    badge:'ktm' },
+  { id:'d6', label:'Day 6', date:'Sun, Apr 6', city:'Kathmandu',    badge:'ktm' },
+  { id:'d7', label:'Day 7', date:'Mon, Apr 7', city:'KTM → HYD',   badge:'flt' },
+];
+
+const DEFAULT_BLOCKS = {
+  d1: [
+    { id:'b1_1', time:'02:15', type:'flight',  activity:'IndiGo 6E 706 — depart Hyderabad (Rajiv Gandhi Intl). Seat 11A. Veg meal included.', note:'Check in online before midnight departure.' },
+    { id:'b1_2', time:'04:40', type:'layover', activity:'Arrive Delhi T1. 3h 10m layover. Change to T3 for next flight.', note:'Allow time for terminal change. Grab breakfast at DEL.' },
+    { id:'b1_3', time:'07:50', type:'flight',  activity:'IndiGo 6E 1151 — Delhi T3 → Kathmandu. Seat 8A.', note:'Window seat! Himalaya views on approach to KTM.' },
+    { id:'b1_4', time:'09:50', type:'arrive',  activity:'Arrive Kathmandu (Tribhuvan International). Immigration + bags.', note:'Buy NCell SIM at arrivals hall (~NPR 500). Do it before leaving airport.' },
+    { id:'b1_5', time:'10:30', type:'default', activity:'Short taxi to domestic terminal for Yeti Airlines check-in.', note:'Allow 45 min buffer before 14:10 departure.' },
+    { id:'b1_6', time:'14:10', type:'flight',  activity:'Yeti Airlines YT 681 — Kathmandu → Pokhara. PNR: A6F0IH. Just 25 minutes!', note:'Annapurna range visible from window on approach to PKR.' },
+    { id:'b1_7', time:'14:35', type:'arrive',  activity:'Arrive Pokhara Airport. Taxi to Himalayan Front Hotel (~15 min).', note:'NPR 300–400 taxi. Settle in, breathe, rest.' },
+    { id:'b1_8', time:'15:00', type:'hotel',   activity:'Check in — Himalayan Front Hotel, Pokhara. Freshen up, rest.', note:'Long travel day. Decompress.' },
+    { id:'b1_9', time:'17:30', type:'walk',    activity:'Evening stroll along Phewa Lake (Lakeside promenade). Golden hour light on the water.', note:'Great for first photos. Gentle start to Pokhara.' },
+    { id:'b1_10',time:'19:30', type:'food',    activity:'Dinner — Vegan Way. Fully veg-friendly café, Lakeside.', note:'Light, easy meal after travel.' },
+    { id:'b1_11',time:'21:00', type:'rest',    activity:'Early night. Set alarm for 04:45 AM for Sarangkot sunrise.', note:'' },
+  ],
+  d2: [
+    { id:'b2_1', time:'04:45', type:'default', activity:'Pre-booked taxi to Sarangkot. Arrange with hotel the night before.', note:'Carry warm jacket — 5–8°C at summit.' },
+    { id:'b2_2', time:'05:30', type:'view',    activity:'Sarangkot Sunrise Point. Annapurna range at dawn.', note:'Arrive before sunrise. Stay 45–60 min. Breathtaking.' },
+    { id:'b2_3', time:'07:00', type:'food',    activity:'Breakfast — hotel or selroti + tea from a street stall.', note:'' },
+    { id:'b2_4', time:'09:00', type:'temple',  activity:'Bindyabasini Temple — hilltop Hindu temple with Pokhara town views.', note:'15 min taxi. Remove shoes. Short stair climb.' },
+    { id:'b2_5', time:'10:30', type:'view',    activity:'Taxi to Begnas Lake (~30 min). Quiet, local, beautiful.', note:'Pack snacks. Less touristy than Phewa — a real gem.' },
+    { id:'b2_6', time:'12:30', type:'food',    activity:'Lunch — Thakali Kitchen. Thakali dal bhat set, ghee, achar, multiple curries.', note:'Ask for piro (spicy). Best Pokhara lunch.' },
+    { id:'b2_7', time:'14:00', type:'view',    activity:"Devi's Falls + Gupteshwor Cave (combo, same spot). Entry ~NPR 50 each.", note:'Waterfall that disappears underground. Fascinating.' },
+    { id:'b2_8', time:'16:30', type:'walk',    activity:'Lakeside wander — market, café, photography, Phewa Lake at dusk.', note:'Last Pokhara evening. Soak it in.' },
+    { id:'b2_9', time:'19:30', type:'food',    activity:'Dinner — Ama Café or Moondance Restaurant. Relaxed lakeside evening.', note:'Light dinner. Pack bags tonight — early taxi tomorrow.' },
+    { id:'b2_10',time:'21:30', type:'pack',    activity:'Pack bags. Taxi to airport by 08:30 AM tomorrow. Web check-in tonight.', note:'Do Yeti web check-in via airline website.' },
+  ],
+  d3: [
+    { id:'b3_1', time:'08:30', type:'default', activity:'Taxi to Pokhara Airport (~15 min). Arrive by 08:30.', note:'NPR 300–400. Pre-book the night before.' },
+    { id:'b3_2', time:'09:55', type:'flight',  activity:'Yeti Airlines YT 676 — Pokhara → Kathmandu. PNR: A6F0IH. 25 min flight.', note:'' },
+    { id:'b3_3', time:'10:20', type:'arrive',  activity:'Arrive Kathmandu. Taxi to Moxy Kathmandu (~20 min).', note:'NPR 600–700 taxi.' },
+    { id:'b3_4', time:'11:00', type:'hotel',   activity:'Check in — Moxy Kathmandu. Freshen up.', note:'' },
+    { id:'b3_5', time:'12:30', type:'food',    activity:'Lunch — Shandar Momo, Thamel. Jhol momo, pan-fried, kothey momo.', note:'First Kathmandu meal. Go very hungry.' },
+    { id:'b3_6', time:'14:00', type:'walk',    activity:'Thamel afternoon explore — streets, shops, cafés, photography.', note:"Don't buy souvenirs yet — better deals at Patan." },
+    { id:'b3_7', time:'16:30', type:'cafe',    activity:'Himalayan Java or Third Wave Coffee Roasters — rest and plan tomorrow.', note:'' },
+    { id:'b3_8', time:'19:00', type:'food',    activity:'Dinner — Barc Restaurant. Rooftop views, veg-friendly, fine dining.', note:'Book in advance if possible.' },
+    { id:'b3_9', time:'21:30', type:'rest',    activity:'Rest. Big temple day tomorrow.', note:'' },
+  ],
+  d4: [
+    { id:'b4_1', time:'06:00', type:'temple',  activity:'Pashupatinath Temple. Taxi (~15 min). Entry: NPR 1000. UNESCO site.', note:'Non-Hindus cannot enter inner sanctum. No photography inside.' },
+    { id:'b4_2', time:'08:30', type:'temple',  activity:'Boudhanath Stupa. Taxi (~10 min). Entry: NPR 400. Walk kora clockwise.', note:'Massive, stunning. Tibetan prayer flags, monks, cafés surrounding it.' },
+    { id:'b4_3', time:'10:30', type:'cafe',    activity:'Tastes of Boudha — café near stupa. Dal bhat, Tibetan dishes.', note:'Lovely stupa views from the café.' },
+    { id:'b4_4', time:'12:00', type:'food',    activity:'Laphing Store — cold spicy Tibetan glass noodles. Non-negotiable.', note:'Very spicy. Eat on the spot.' },
+    { id:'b4_5', time:'13:30', type:'food',    activity:'Lunch — Honacha, Ason. Bara, chatamari, yomari, full Newari spread.', note:'Old Kathmandu feel. Authentic.' },
+    { id:'b4_6', time:'15:30', type:'walk',    activity:'Ason Chowk market walk — spices, fabric, street food. Photography gold.', note:'Pick up laphing spice mix here.' },
+    { id:'b4_7', time:'17:30', type:'cafe',    activity:'Himalayan Java — rest, journal, review photos.', note:'' },
+    { id:'b4_8', time:'19:30', type:'food',    activity:'Dinner — Nandanis. Full veg Newari khaja set.', note:'Ask for veg set specifically.' },
+    { id:'b4_9', time:'21:30', type:'rest',    activity:'Rest.', note:'' },
+  ],
+  d5: [
+    { id:'b5_1', time:'09:00', type:'temple',  activity:'Kathmandu Durbar Square. Taxi (~10 min). Entry: NPR 1000.', note:'Kumari Ghar, Hanuman Dhoka. Great morning light for photography.' },
+    { id:'b5_2', time:'11:00', type:'walk',    activity:'Indra Chowk + Asan market. Street snacks: selroti, panipuri, chatpate.', note:'Real old Kathmandu. Best street food hunting of the trip.' },
+    { id:'b5_3', time:'13:00', type:'food',    activity:'Lunch — Dechenling. Tibetan veg dishes, thukpa, tingmo.', note:'Warm and cosy. Authentic Tibetan.' },
+    { id:'b5_4', time:'14:30', type:'cook',    activity:'Nepali vegetarian cooking class — learn dal, momo, tarkari, achar.', note:'Book in advance. ~₹900/person. Includes the meal at the end.' },
+    { id:'b5_5', time:'17:30', type:'cable',   activity:'Taxi to Chandragiri Hills cable car base (~30 min). Cable car up: NPR 700 return.', note:'Panoramic valley + Himalaya views. Golden hour from the top.' },
+    { id:'b5_6', time:'19:30', type:'food',    activity:'Dinner — OR2K or Thamel House. Rooftop, relaxed.', note:'OR2K has excellent veg Middle Eastern menu.' },
+    { id:'b5_7', time:'21:30', type:'rest',    activity:'Rest.', note:'' },
+  ],
+  d6: [
+    { id:'b6_1', time:'09:00', type:'temple',  activity:'Patan Durbar Square. Taxi (~20 min). Entry: NPR 1000.', note:'Most beautiful Durbar Square. Krishna Mandir, Golden Temple.' },
+    { id:'b6_2', time:'11:30', type:'shop',    activity:'Patan craft shops — pashmina, thangka, singing bowls, silver.', note:'Better quality + fairer prices than Thamel. Negotiate firmly.' },
+    { id:'b6_3', time:'13:00', type:'food',    activity:'Lunch — local dal bhat near Patan Durbar Square.', note:'Last sit-down Nepali lunch. Savour it.' },
+    { id:'b6_4', time:'14:30', type:'view',    activity:'Taxi Patan → Nagarkot (~50–60 min, NPR 2000–2500 return).', note:'Arrive by 16:30 to find a good viewpoint spot.' },
+    { id:'b6_5', time:'17:00', type:'view',    activity:'Nagarkot viewpoint — Himalaya panorama at golden hour. 2175m.', note:'Dress warm — cold at altitude.' },
+    { id:'b6_6', time:'18:30', type:'default', activity:'Taxi back to Kathmandu.', note:'' },
+    { id:'b6_7', time:'20:00', type:'food',    activity:'Dinner — Dechenling or Chez Caroline. Rooftop, last big meal.', note:'Splurge a little. Last evening in Nepal.' },
+    { id:'b6_8', time:'22:00', type:'pack',    activity:'Pack bags. Flight is 20:50 tomorrow. Full day available.', note:'' },
+  ],
+  d7: [
+    { id:'b7_1', time:'09:00', type:'cafe',    activity:'Slow hotel breakfast. Last KTM morning — no rush today.', note:'' },
+    { id:'b7_2', time:'10:30', type:'shop',    activity:'Final souvenir run — Thamel. Laphing spice, Himalayan tea, last buys.', note:'Set a firm limit!' },
+    { id:'b7_3', time:'12:30', type:'food',    activity:'Quick dal bhat tarkari near Thamel. Very last Nepali meal. Savour it.', note:'' },
+    { id:'b7_4', time:'14:30', type:'hotel',   activity:'Check out of Moxy Kathmandu. Leave bags with hotel if needed.', note:'' },
+    { id:'b7_5', time:'17:00', type:'default', activity:'Taxi to Tribhuvan International Airport. Arrive by 17:30.', note:'International departure — 3 hours before flight.' },
+    { id:'b7_6', time:'20:50', type:'flight',  activity:'IndiGo 6E 1162 — Kathmandu → Delhi. PNR: RE52JK. Seat 7F.', note:'' },
+    { id:'b7_7', time:'22:25', type:'layover', activity:'Arrive Delhi T3. 4h layover. Change planes + terminal (T3 → T1). Re-check bags.', note:'Must collect and re-check baggage at T1.' },
+    { id:'b7_8', time:'02:25', type:'flight',  activity:'IndiGo 6E 704 — Delhi T1 → Hyderabad. Seat 17A. Veg meal. (Wed Apr 8)', note:'' },
+    { id:'b7_9', time:'04:40', type:'arrive',  activity:'Arrive Hyderabad (Rajiv Gandhi Intl). Wed, April 8. Trip complete! 🙏🏽', note:'' },
+  ],
+};
+
+const DEFAULT_RESTAURANTS = [
+  { id:'r1',  name:'Vegan Way',          city:'Pokhara',   day:'Day 1', type:'Vegan café',       order:'Momos, dal bhat bowl',             note:'Lakeside. Easy first meal after travel.', visited:false },
+  { id:'r2',  name:'Ama Café',           city:'Pokhara',   day:'Day 2', type:'Café / Light',     order:'Veg sandwiches, momos, coffee',    note:'Lakeside. Relaxed, good for breakfast too.', visited:false },
+  { id:'r3',  name:'Thakali Kitchen',    city:'Pokhara',   day:'Day 2', type:'Traditional Nepali',order:'Thakali set — dal, bhat, ghee',   note:"Ask for piro (spicy). Best Pokhara lunch.", visited:false },
+  { id:'r4',  name:'Moondance',          city:'Pokhara',   day:'Day 2', type:'Veg-friendly café', order:'Veg pasta, local dishes, desserts',note:'Lakeside. Great for dessert stop.', visited:false },
+  { id:'r5',  name:'Barc Restaurant',    city:'Kathmandu', day:'Day 3', type:'Rooftop / Fine',    order:'Veg mains, local-fusion',          note:'Rooftop KTM views. Book ahead.', visited:false },
+  { id:'r6',  name:'Shandar Momo',       city:'Kathmandu', day:'Day 3', type:'Street / Casual',   order:'Jhol, pan-fried, kothey momo',    note:'Thamel. Legendary. Go very hungry.', visited:false },
+  { id:'r7',  name:'Tastes of Boudha',   city:'Kathmandu', day:'Day 4', type:'Café / Local',      order:'Dal bhat, Tibetan dishes, thukpa', note:'Right near Boudhanath. Lovely stupa views.', visited:false },
+  { id:'r8',  name:'Laphing Store',      city:'Kathmandu', day:'Day 4', type:'Street snack',      order:'Cold spicy laphing 🌶🌶🌶',         note:'Non-negotiable. Very spicy.', visited:false },
+  { id:'r9',  name:'Honacha',            city:'Kathmandu', day:'Day 4', type:'Newari traditional', order:'Bara, chatamari, yomari',         note:'Ason. Authentic old-Kathmandu.', visited:false },
+  { id:'r10', name:'Nandanis',           city:'Kathmandu', day:'Day 4', type:'Newari / Local',    order:'Veg Newari khaja set, chiura',     note:'Ask for full veg set specifically.', visited:false },
+  { id:'r11', name:'Himalayan Java',     city:'Kathmandu', day:'Day 4–5',type:'Specialty Coffee', order:'Coffee, veg snacks, cakes',        note:"Nepal's best coffee chain. Multiple Thamel locations.", visited:false },
+  { id:'r12', name:'Third Wave Coffee',  city:'Kathmandu', day:'Day 5', type:'Specialty Coffee',  order:'Pour-over, veg pastries',          note:'Quieter café. Great for journaling.', visited:false },
+  { id:'r13', name:'Dechenling',         city:'Kathmandu', day:'Day 5–6',type:'Tibetan / Nepali', order:'Thukpa, tingmo, veg Tibetan dishes',note:'Warm, cosy. Authentic Tibetan.', visited:false },
+  { id:'r14', name:'OR2K',              city:'Kathmandu', day:'Day 5–6',type:'Middle Eastern',    order:'Hummus, falafel wrap, veg curries', note:'Rooftop Thamel. Surprisingly excellent for veg.', visited:false },
+  { id:'r15', name:'Chez Caroline',      city:'Kathmandu', day:'Day 6', type:'Rooftop / Fine',    order:'Veg Nepali-continental, fusion',    note:'Last big dinner. Rooftop Thamel views.', visited:false },
+  { id:'r16', name:'Thamel House',       city:'Kathmandu', day:'Day 3/6',type:'Traditional Nepali',order:'Dal bhat set + multiple curries',  note:'Upscale traditional Nepali dining.', visited:false },
+  { id:'r17', name:'Asan Street Stalls', city:'Kathmandu', day:'Day 4', type:'Street food',       order:'Selroti, panipuri, chatpate, yomari',note:'Best street food stretch in KTM.', visited:false },
+];
+
+const DISHES = [
+  { name:'Dal Bhat Tarkari', desc:'Rice + lentils + veg curry. National dish. Unlimited refills.', where:'Everywhere', spice:'Mild–med', emoji:'🍛' },
+  { name:'Momo',             desc:"Steamed/fried/jhol dumplings. Nepal's street soul.",             where:'Shandar Momo + everywhere', spice:'Mild–spicy', emoji:'🥟' },
+  { name:'Laphing',          desc:'Cold spicy Tibetan glass noodles. Life-changing.',               where:'Laphing Store, Boudha area', spice:'🌶🌶🌶 Very', emoji:'🍜' },
+  { name:'Thakali Set',      desc:'Mustang-style dal bhat with extra ghee, gundruk, sides.',        where:'Thakali Kitchen, Pokhara', spice:'Mild', emoji:'🍱' },
+  { name:'Newari Khaja Set', desc:'Bara, chiura, spiced greens, achar — full Newari feast.',        where:'Honacha, Nandanis', spice:'Medium', emoji:'🫕' },
+  { name:'Yomari',           desc:'Sweet steamed rice-flour dumpling with chaku filling.',          where:'Street stalls, Honacha', spice:'None', emoji:'🍡' },
+  { name:'Selroti',          desc:'Crispy ring-shaped rice flour doughnut. Eat with hot tea.',      where:'Street stalls, Asan', spice:'None', emoji:'🍩' },
+  { name:'Laphing',          desc:'Tibetan fried potato cake / dumpling (Rildok).',                 where:'Near Boudhanath area', spice:'Mild', emoji:'🥔' },
+  { name:'Thukpa',           desc:'Tibetan veg noodle soup. Warm and comforting.',                  where:'Dechenling, near Boudha', spice:'Mild', emoji:'🍲' },
+  { name:'Chatamari',        desc:"Newari rice crepe — the 'Nepali pizza'.",                        where:'Honocha, Newari spots', spice:'Mild', emoji:'🫓' },
+  { name:'Panipuri',         desc:'Crispy puri + spiced tamarind water, Nepal style.',              where:'Asan market street stalls', spice:'Med–spicy', emoji:'🫙' },
+  { name:'Juju Dhau',        desc:'Royal curd from Bhaktapur. Creamy, sweet, clay pot. Eat on spot.',where:'Bhaktapur local', spice:'None', emoji:'🍮' },
+  { name:'Dhido',            desc:'Buckwheat/millet thick porridge. Rustic, earthy, very Nepali.',  where:'Local restaurants', spice:'Mild', emoji:'🥣' },
+];
+
+const APPS = [
+  { icon:'🚗', name:'Pathao',             desc:"Nepal's Uber equivalent. Set fares, no bargaining. Essential in Kathmandu." },
+  { icon:'🚕', name:'InDrive',            desc:'You propose the fare, driver accepts. Good alternative to Pathao.' },
+  { icon:'🗺️', name:'Google Maps',        desc:'Download Nepal offline map before flying. Works without data.' },
+  { icon:'🗺️', name:'Maps.me',            desc:'More detailed Nepal offline maps. Download KTM + Pokhara packs.' },
+  { icon:'🈯', name:'Google Translate',   desc:'Download Nepali language pack offline. Useful for menus, signs, stalls.' },
+  { icon:'💱', name:'XE Currency',        desc:'Instant INR ↔ NPR conversion. Know the rate before you pay.' },
+  { icon:'🌤️', name:'Windy',              desc:'Check Sarangkot sunrise window — you need a clear morning.' },
+  { icon:'✈️', name:'IndiGo App',         desc:'Mandatory web check-in. Do 48hrs before. Store boarding pass.' },
+  { icon:'✈️', name:'Yeti Airlines App',  desc:'Mandatory web check-in for KTM↔PKR flights. Do it the night before.' },
+  { icon:'📷', name:'Snapseed',           desc:'Edit those golden-hour Sarangkot shots on-the-go. Fantastic free editor.' },
+  { icon:'📷', name:'Lightroom Mobile',   desc:'Gold standard photo editing if you are serious about photography.' },
+  { icon:'🪪', name:'DigiYatra',          desc:'Link Aadhaar + boarding pass. Speeds up HYD + DEL airport experience.' },
+  { icon:'📍', name:'TripAdvisor',        desc:'Real traveller reviews. Good for last-minute food discoveries in KTM.' },
+  { icon:'☁️', name:'Google Drive',       desc:'Upload passport, tickets, hotel bookings — access offline anywhere.' },
+];
+
+const WATCHOUTS = [
+  { icon:'🛫', title:'Web check-in is MANDATORY', desc:'IndiGo and Yeti both require it. Do it the night before via airline website/app. Risk of denied boarding if you miss the window.' },
+  { icon:'🛫', title:'DEL terminal change — both ways', desc:'HYD→KTM: arrive T1, depart T3. KTM→HYD: arrive T3, depart T1. Both times you must change terminals.' },
+  { icon:'🛫', title:'Re-check bags at Delhi on return', desc:'On KTM→HYD leg: collect bags at DEL T3 and re-check at T1. Allow the full 4-hour layover.' },
+  { icon:'💰', title:'Carry cash — cards unreliable', desc:'Most restaurants, temples, taxis, and street food are cash-only. Exchange INR at KTM airport. Rate: ~NPR 1.6/INR 1.' },
+  { icon:'💰', title:'Small notes for street food', desc:'Keep NPR 50, 100, 200 notes separate for stalls and taxis. Vendors cannot change NPR 1000 notes.' },
+  { icon:'🛕', title:'Remove shoes at ALL temples', desc:'Carry socks in your day bag. Non-negotiable at every Hindu and Buddhist site across Nepal.' },
+  { icon:'🛕', title:'Dress modestly', desc:'Cover shoulders and knees. Keep a dupatta in the day bag. Especially important at Pashupatinath.' },
+  { icon:'📸', title:'No photos in inner sanctums', desc:'Pashupatinath inner sanctum — no entry for non-Hindus AND no photography. Always ask before photographing rituals.' },
+  { icon:'🚕', title:'Negotiate BEFORE getting in taxis', desc:'Meters are rarely used. Agree the fare before entering. Use Pathao/InDrive in Kathmandu for set fares.' },
+  { icon:'💧', title:'Never drink tap water', desc:'Only sealed bottled water (NPR 20–30 for 1.5L). Do not even brush teeth with tap water if you have a sensitive stomach.' },
+  { icon:'🌡️', title:'Warm days, cold mornings', desc:'Days: 25–30°C. Sarangkot dawn: 5–8°C. Nagarkot sunset: ~12°C. Carry one warm layer in your day bag every day.' },
+  { icon:'🏷️', title:'Negotiate in Thamel', desc:'Prices are inflated for tourists. Start at 40–50% of asking price. Patan has better quality at fairer prices.' },
+  { icon:'🌶️', title:'Ask them to make it spicy', desc:"Say 'piro banaunus' or 'timur halchha'. Nepali food is mild by default — they will spice it up on request." },
+  { icon:'🎫', title:'Carry NPR cash for entry tickets', desc:'KTM Durbar: NPR 1000, Patan: NPR 1000, Pashupatinath: NPR 1000, Boudhanath: NPR 400, Chandragiri cable car: NPR 700.' },
+];
+
+// ═══════════════════════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════════
+// DEFAULT PACKING DATA
+// ═══════════════════════════════════════════════════════════════
+const DEFAULT_PACKING = {
+  khushi: {
+    carryon: {
+      categories: [
+        { id:'kc_docs', name:'Documents & Essentials', emoji:'📄', items:[
+          { id:'ki1', name:'Passport', checked:false },
+          { id:'ki2', name:'Flight tickets (printed + phone)', checked:false },
+          { id:'ki3', name:'Hotel bookings printout', checked:false },
+          { id:'ki4', name:'INR cash (for airport + Nepal)', checked:false },
+          { id:'ki5', name:'Credit/debit card', checked:false },
+          { id:'ki6', name:'Phone + charger', checked:false },
+          { id:'ki7', name:'Power bank', checked:false },
+          { id:'ki8', name:'Earphones/airpods', checked:false },
+        ]},
+        { id:'kc_skincare', name:'Skincare Pouch', emoji:'🧴', items:[
+          { id:'ki9',  name:'Moisturiser', checked:false },
+          { id:'ki10', name:'Sunscreen SPF 50', checked:false },
+          { id:'ki11', name:'Lip balm', checked:false },
+          { id:'ki12', name:'Face wash (travel size)', checked:false },
+          { id:'ki13', name:'Toner / mist', checked:false },
+        ]},
+        { id:'kc_makeup', name:'Makeup Pouch', emoji:'💄', items:[
+          { id:'ki14', name:'Foundation / BB cream', checked:false },
+          { id:'ki15', name:'Mascara', checked:false },
+          { id:'ki16', name:'Kajal / eyeliner', checked:false },
+          { id:'ki17', name:'Lip colour', checked:false },
+          { id:'ki18', name:'Setting powder / blush', checked:false },
+        ]},
+        { id:'kc_meds_co', name:'Medicines (carry-on)', emoji:'💊', items:[
+          { id:'ki19', name:'ORS sachets', checked:false },
+          { id:'ki20', name:'Antacid / Digene', checked:false },
+          { id:'ki21', name:'Paracetamol / Dolo 650', checked:false },
+          { id:'ki22', name:'Motion sickness tablet', checked:false },
+        ]},
+        { id:'kc_snacks', name:'Snacks & Comfort', emoji:'🍫', items:[
+          { id:'ki23', name:'Dry snacks for flights', checked:false },
+          { id:'ki24', name:'Neck pillow', checked:false },
+          { id:'ki25', name:'Eye mask', checked:false },
+        ]},
+      ]
+    },
+    luggage: {
+      categories: [
+        { id:'kl_clothes', name:'Clothing', emoji:'👗', items:[
+          { id:'kl1', name:'Tops / kurtas (4–5)', checked:false },
+          { id:'kl2', name:'Pants / bottoms (3)', checked:false },
+          { id:'kl3', name:'Warm layer / fleece jacket', checked:false },
+          { id:'kl4', name:'Comfortable walking shoes', checked:false },
+          { id:'kl5', name:'Sandals / flats', checked:false },
+          { id:'kl6', name:'Socks (5 pairs)', checked:false },
+          { id:'kl7', name:'Innerwear (5 sets)', checked:false },
+          { id:'kl8', name:'Dupatta / shawl (for temples)', checked:false },
+          { id:'kl9', name:'Pyjamas / lounge wear', checked:false },
+        ]},
+        { id:'kl_hair', name:'Hair Pouch', emoji:'💇', items:[
+          { id:'kl10', name:'Shampoo + conditioner (travel size)', checked:false },
+          { id:'kl11', name:'Hair oil / serum', checked:false },
+          { id:'kl12', name:'Hair ties / clips', checked:false },
+          { id:'kl13', name:'Hair brush / comb', checked:false },
+        ]},
+        { id:'kl_misc', name:'Misc', emoji:'🎒', items:[
+          { id:'kl14', name:'Laundry bag', checked:false },
+          { id:'kl15', name:'Umbrella / rain poncho', checked:false },
+          { id:'kl16', name:'Sunglasses', checked:false },
+          { id:'kl17', name:'Travel adapter', checked:false },
+        ]},
+      ]
+    }
+  },
+  aagam: {
+    carryon: {
+      categories: [
+        { id:'ac_docs', name:'Documents & Essentials', emoji:'📄', items:[
+          { id:'ai1', name:'Passport', checked:false },
+          { id:'ai2', name:'Flight tickets (printed + phone)', checked:false },
+          { id:'ai3', name:'Hotel bookings printout', checked:false },
+          { id:'ai4', name:'INR cash', checked:false },
+          { id:'ai5', name:'Credit/debit card', checked:false },
+          { id:'ai6', name:'Phone + charger', checked:false },
+          { id:'ai7', name:'Power bank', checked:false },
+          { id:'ai8', name:'Earphones/airpods', checked:false },
+          { id:'ai9', name:'Camera + memory cards', checked:false },
+        ]},
+        { id:'ac_meds', name:'Medicines (carry-on)', emoji:'💊', items:[
+          { id:'ai10', name:'ORS sachets', checked:false },
+          { id:'ai11', name:'Antacid / Digene', checked:false },
+          { id:'ai12', name:'Paracetamol / Dolo 650', checked:false },
+          { id:'ai13', name:'Motion sickness tablet', checked:false },
+        ]},
+        { id:'ac_grooming', name:'Grooming Essentials', emoji:'🪒', items:[
+          { id:'ai14', name:'Moisturiser / SPF', checked:false },
+          { id:'ai15', name:'Lip balm', checked:false },
+        ]},
+        { id:'ac_snacks', name:'Snacks & Comfort', emoji:'🍫', items:[
+          { id:'ai16', name:'Dry snacks for flights', checked:false },
+          { id:'ai17', name:'Neck pillow', checked:false },
+        ]},
+      ]
+    },
+    luggage: {
+      categories: [
+        { id:'al_clothes', name:'Clothing', emoji:'👕', items:[
+          { id:'al1', name:'T-shirts (5)', checked:false },
+          { id:'al2', name:'Pants / jeans (2)', checked:false },
+          { id:'al3', name:'Warm layer / fleece jacket', checked:false },
+          { id:'al4', name:'Comfortable walking shoes', checked:false },
+          { id:'al5', name:'Sandals / slippers', checked:false },
+          { id:'al6', name:'Socks (5 pairs)', checked:false },
+          { id:'al7', name:'Innerwear (5 sets)', checked:false },
+          { id:'al8', name:'Shorts / lounge wear', checked:false },
+        ]},
+        { id:'al_grooming', name:'Grooming Bag', emoji:'🪒', items:[
+          { id:'al9',  name:'Shampoo + face wash', checked:false },
+          { id:'al10', name:'Razor / trimmer', checked:false },
+          { id:'al11', name:'Deodorant', checked:false },
+          { id:'al12', name:'Toothbrush + toothpaste', checked:false },
+        ]},
+        { id:'al_misc', name:'Misc', emoji:'🎒', items:[
+          { id:'al13', name:'Sunglasses', checked:false },
+          { id:'al14', name:'Laundry bag', checked:false },
+          { id:'al15', name:'Umbrella / rain poncho', checked:false },
+          { id:'al16', name:'Travel adapter', checked:false },
+        ]},
+      ]
+    }
+  }
+};
+
+// ═══════════════════════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════════════════════
+let state = {
+  blocks: JSON.parse(JSON.stringify(DEFAULT_BLOCKS)),
+  restaurants: JSON.parse(JSON.stringify(DEFAULT_RESTAURANTS)),
+  packing: JSON.parse(JSON.stringify(DEFAULT_PACKING)),
+  notes: { general: '', days: {} },
+  expenses: [],
+};
+
+let editingBlock = null;
+let addingToDay = null;
+let dragSrc = null;
+let currentPacker = 'khushi';
+let addItemTarget = null; // { packer, bagType, catId }
+let addCatTarget = null;  // { packer, bagType }
+
+// ═══════════════════════════════════════════════════════════════
+// FIREBASE REALTIME DATABASE SYNC
+// ═══════════════════════════════════════════════════════════════
+const FIREBASE_CONFIG = {
+  apiKey: "AIzaSyANlDSFSnIZYYmpC-o0hwEs17stlB_2dpU",
+  authDomain: "nepal-trip-ksmasm.firebaseapp.com",
+  databaseURL: "https://nepal-trip-ksmasm-default-rtdb.firebaseio.com",
+  projectId: "nepal-trip-ksmasm",
+  storageBucket: "nepal-trip-ksmasm.firebasestorage.app",
+  messagingSenderId: "556158576899",
+  appId: "1:556158576899:web:ae1c245129d70ce9d96136"
+};
+
+let db = null;
+let firebaseReady = false;
+let saveTimeout = null;
+
+async function initFirebase() {
+  try {
+    const { initializeApp } = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js');
+    const { getDatabase, ref, onValue, set, get } = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js');
+
+    // Check if user has configured Firebase
+    if (FIREBASE_CONFIG.apiKey === "AIzaSyDemo_REPLACE_WITH_YOUR_KEY") {
+      showFirebaseBanner();
+      await loadFromLocalStorage();
+      return;
+    }
+
+    const app = initializeApp(FIREBASE_CONFIG);
+    db = getDatabase(app);
+    firebaseReady = true;
+
+    // Load initial state from Firebase
+    const snapshot = await get(ref(db, 'nepal_planner'));
+    if (snapshot.exists()) {
+      const data = snapshot.val();
+      if (data.blocks) state.blocks = data.blocks;
+      if (data.restaurants) state.restaurants = data.restaurants;
+      if (data.packing) state.packing = data.packing;
+      if (data.notes) state.notes = data.notes;
+      if (data.expenses) state.expenses = data.expenses;
+    }
+
+    // Listen for real-time updates from other devices
+    onValue(ref(db, 'nepal_planner'), (snapshot) => {
+      if (!snapshot.exists()) return;
+      const data = snapshot.val();
+      // Only update if data actually changed (avoid re-render from our own save)
+      const newStr = JSON.stringify(data);
+      const curStr = JSON.stringify({ blocks: state.blocks, restaurants: state.restaurants, packing: state.packing, notes: state.notes, expenses: state.expenses });
+      if (newStr !== curStr) {
+        if (data.blocks) state.blocks = data.blocks;
+        if (data.restaurants) state.restaurants = data.restaurants;
+        if (data.packing) state.packing = data.packing;
+        if (data.notes) state.notes = data.notes;
+        if (data.expenses) state.expenses = data.expenses;
+        renderItinerary();
+        renderFoodGuide();
+        renderPacking();
+        renderNotes();
+        renderBudget();
+        showToast('🔄 Synced from another device');
+      }
+    });
+
+    showToast('🔥 Firebase connected!');
+  } catch(e) {
+    console.warn('Firebase init failed:', e);
+    showFirebaseBanner();
+    await loadFromLocalStorage();
+  }
+}
+
+function showFirebaseBanner() {
+  const banner = document.createElement('div');
+  banner.id = 'firebase-banner';
+  banner.style.cssText = `
+    background: var(--saffron-light); border-bottom: 1.5px solid var(--saffron);
+    padding: 10px 20px; text-align: center; font-size: 13px; color: var(--text);
+  `;
+  banner.innerHTML = `
+    ⚡ <strong>Firebase not configured</strong> — changes save locally only.
+    <a href="#" onclick="openFirebaseSetup()" style="color:var(--forest);font-weight:600;margin-left:8px;">Set up sync →</a>
+  `;
+  document.body.insertBefore(banner, document.querySelector('header'));
+}
+
+function openFirebaseSetup() {
+  const url = prompt(`To sync across devices, paste your Firebase Realtime Database URL below.\n\n1. Go to console.firebase.google.com\n2. Create a project → Build → Realtime Database\n3. Paste your databaseURL here (e.g. https://your-project-default-rtdb.firebaseio.com)\n\nThen also update FIREBASE_CONFIG at the top of the file with your full config.`);
+  if (url) {
+    showToast('Update FIREBASE_CONFIG in the HTML file with your full config. See console for details.');
+    console.log('Your DB URL:', url, '\nGet full config from Firebase Console → Project Settings → Your apps → Firebase SDK snippet');
+  }
+}
+
+async function saveState() {
+  // Debounce saves
+  clearTimeout(saveTimeout);
+  saveTimeout = setTimeout(async () => {
+    const payload = { blocks: state.blocks, restaurants: state.restaurants, packing: state.packing, notes: state.notes, expenses: state.expenses };
+    if (firebaseReady && db) {
+      try {
+        const { ref, set } = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js');
+        await set(ref(db, 'nepal_planner'), payload);
+      } catch(e) { console.warn('Firebase save failed, saving locally'); saveToLocalStorage(payload); }
+    } else {
+      saveToLocalStorage(payload);
+    }
+  }, 400);
+}
+
+function saveToLocalStorage(payload) {
+  try { localStorage.setItem('nepal_planner_v2', JSON.stringify(payload)); } catch(e) {}
+}
+
+async function loadFromLocalStorage() {
+  try {
+    const saved = localStorage.getItem('nepal_planner_v2');
+    if (saved) {
+      const data = JSON.parse(saved);
+      if (data.blocks) state.blocks = data.blocks;
+      if (data.restaurants) state.restaurants = data.restaurants;
+      if (data.packing) state.packing = data.packing;
+      if (data.notes) state.notes = data.notes;
+      if (data.expenses) state.expenses = data.expenses;
+    }
+  } catch(e) {}
+}
+
+// ═══════════════════════════════════════════════════════════════
+// UI HELPERS
+// ═══════════════════════════════════════════════════════════════
+function showSection(id, el) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('s-' + id).classList.add('active');
+  el.classList.add('active');
+  if (id === 'packing') renderPacking();
+  if (id === 'notes') renderNotes();
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+function openModal(id) {
+  document.getElementById(id).classList.add('open');
+}
+
+function closeModal(id) {
+  document.getElementById(id).classList.remove('open');
+  editingBlock = null;
+  addingToDay = null;
+}
+
+// ═══════════════════════════════════════════════════════════════
+// PACKING
+// ═══════════════════════════════════════════════════════════════
+function switchPacker(packer) {
+  currentPacker = packer;
+  document.querySelectorAll('.pack-person-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('ppb-' + packer).classList.add('active');
+  renderPacking();
+}
+
+function renderPacking() {
+  ensurePackingState();
+  const container = document.getElementById('packing-container');
+  if (!container) return;
+  const p = state.packing[currentPacker];
+
+  container.innerHTML = ['carryon','luggage'].map(bagType => {
+    const bag = p[bagType];
+    const bagLabel = bagType === 'carryon' ? '✈️ Carry-on Bag' : '🧳 Checked Luggage';
+    const totalItems = bag.categories.reduce((s,c) => s + (c.items||[]).length, 0);
+    const checkedItems = bag.categories.reduce((s,c) => s + (c.items||[]).filter(i=>i.checked).length, 0);
+
+    return `<div class="pack-bag-section">
+      <div class="pack-bag-header">
+        <div>
+          <div class="pack-bag-title">${bagLabel}</div>
+          <div class="pack-bag-count">${checkedItems} / ${totalItems} packed</div>
+        </div>
+      </div>
+      ${bag.categories.map(cat => renderPackCategory(cat, bagType)).join('')}
+    </div>`;
+  }).join('');
+}
+
+function renderPackCategory(cat, bagType) {
+  const items = cat.items || [];
+  const checkedCount = items.filter(i=>i.checked).length;
+  return `<div class="pack-category" id="cat-${cat.id}">
+    <div class="pack-cat-header" onclick="toggleCatOpen('${cat.id}')">
+      <div class="pack-cat-name">
+        <span>${cat.emoji || '📦'}</span> ${cat.name}
+        <span class="pack-cat-count">${checkedCount}/${items.length}</span>
+      </div>
+      <div class="pack-cat-actions">
+        <button class="icon-btn del" onclick="event.stopPropagation();deletePackCategory('${cat.id}','${bagType}')" title="Delete category">✕</button>
+        <span class="pack-cat-chevron open" id="chev-${cat.id}">▼</span>
+      </div>
+    </div>
+    <div class="pack-items open" id="items-${cat.id}">
+      ${items.map(item => `
+        <div class="pack-item" id="item-${item.id}">
+          <div class="pack-check ${item.checked ? `checked` : ``}" onclick="togglePackItem('${cat.id}','${item.id}','${bagType}')">${item.checked ? `✓` : ``}</div>
+          <div class="pack-item-name ${item.checked ? `checked` : ``}">${item.name}</div>
+          <button class="icon-btn del pack-item-del" onclick="deletePackItem('${cat.id}','${item.id}','${bagType}')" title="Remove">✕</button>
+        </div>
+      `).join('')}
+      <div class="pack-add-item">
+        <input type="text" placeholder="Add item…" id="newinput-${cat.id}"
+          onkeydown="if(event.key==='Enter')addPackItemInline('${cat.id}','${bagType}')">
+        <button onclick="addPackItemInline('${cat.id}','${bagType}')">Add</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function toggleCatOpen(catId) {
+  const items = document.getElementById('items-' + catId);
+  const chev = document.getElementById('chev-' + catId);
+  if (items) items.classList.toggle('open');
+  if (chev) chev.classList.toggle('open');
+}
+
+function ensurePackingState() {
+  if (!state.packing) state.packing = JSON.parse(JSON.stringify(DEFAULT_PACKING));
+  ['khushi','aagam'].forEach(p => {
+    if (!state.packing[p]) state.packing[p] = JSON.parse(JSON.stringify(DEFAULT_PACKING[p]));
+    ['carryon','luggage'].forEach(b => {
+      if (!state.packing[p][b]) state.packing[p][b] = { categories: [] };
+      if (!state.packing[p][b].categories) state.packing[p][b].categories = [];
+      state.packing[p][b].categories.forEach(cat => { if (!cat.items) cat.items = []; });
+    });
+  });
+}
+
+function togglePackItem(catId, itemId, bagType) {
+  ensurePackingState();
+  const cat = state.packing[currentPacker][bagType].categories.find(c=>c.id===catId);
+  if (!cat) return;
+  const item = cat.items.find(i=>i.id===itemId);
+  if (!item) return;
+  item.checked = !item.checked;
+  saveState();
+  renderPacking();
+}
+
+function deletePackItem(catId, itemId, bagType) {
+  ensurePackingState();
+  const cat = state.packing[currentPacker][bagType].categories.find(c=>c.id===catId);
+  if (!cat) return;
+  cat.items = cat.items.filter(i=>i.id!==itemId);
+  saveState();
+  renderPacking();
+  showToast('Item removed.');
+}
+
+function addPackItemInline(catId, bagType) {
+  const input = document.getElementById('newinput-' + catId);
+  if (!input) return;
+  const name = input.value.trim();
+  if (!name) { showToast('Please type an item name first.'); return; }
+  ensurePackingState();
+  const cat = state.packing[currentPacker][bagType].categories.find(c=>c.id===catId);
+  if (!cat) { showToast('Could not find category — try refreshing.'); return; }
+  input.value = '';
+  cat.items.push({ id:'pi_'+Date.now(), name, checked:false });
+  saveState();
+  renderPacking();
+  const refocused = document.getElementById('newinput-' + catId);
+  if (refocused) refocused.focus();
+  showToast('Item added!');
+}
+
+function savePackItem() {
+  const input = document.getElementById('pi-name');
+  if (!input) return;
+  const name = input.value.trim();
+  if (!name) { showToast('Please enter an item name.'); return; }
+  if (!addItemTarget) { showToast('No category selected.'); closeModal('add-pack-item-modal'); return; }
+  ensurePackingState();
+  const { packer, bagType, catId } = addItemTarget;
+  const cat = state.packing[packer][bagType].categories.find(c => c.id === catId);
+  if (!cat) { showToast('Category not found.'); return; }
+  if (!cat.items) cat.items = [];
+  cat.items.push({ id: 'pi_' + Date.now(), name, checked: false });
+  saveState();
+  renderPacking();
+  closeModal('add-pack-item-modal');
+  showToast('Item added!');
+}
+
+function openAddCategory(bagType) {
+  addCatTarget = { packer: currentPacker, bagType };
+  document.getElementById('pc-name').value = '';
+  document.getElementById('pc-emoji').value = '';
+  openModal('add-pack-cat-modal');
+}
+
+function savePackCategory() {
+  if (!addCatTarget) { showToast('No bag selected — please try again.'); return; }
+  const name = document.getElementById('pc-name').value.trim();
+  if (!name) { showToast('Please enter a category name.'); return; }
+  const emoji = document.getElementById('pc-emoji').value.trim() || '📦';
+  ensurePackingState();
+  const { packer, bagType } = addCatTarget;
+  state.packing[packer][bagType].categories.push({
+    id: 'cat_'+Date.now(), name, emoji, items: []
+  });
+  saveState();
+  renderPacking();
+  closeModal('add-pack-cat-modal');
+  showToast('Category added!');
+}
+
+function deletePackCategory(catId, bagType) {
+  if (!confirm('Delete this category and all its items?')) return;
+  ensurePackingState();
+  const bag = state.packing[currentPacker][bagType];
+  bag.categories = bag.categories.filter(c=>c.id!==catId);
+  saveState();
+  renderPacking();
+  showToast('Category removed.');
+}
+
+
+
+// ═══════════════════════════════════════════════════════════════
+// BLOCK TYPE
+// ═══════════════════════════════════════════════════════════════
+function blockTypeCss(type) {
+  const map = {
+    flight:'flight', layover:'layover', arrive:'arrive', hotel:'hotel',
+    food:'food', walk:'walk', temple:'temple', view:'view', cafe:'cafe',
+    shop:'shop', rest:'rest', cook:'cook', cable:'cable', pack:'pack',
+  };
+  return 'type-' + (map[type] || 'default');
+}
+
+function blockTypeLabel(type) {
+  const map = {
+    flight:'✈ Flight', layover:'🔄 Layover', arrive:'🛬 Arrive', hotel:'🏨 Hotel',
+    food:'🍽️ Food', walk:'🚶 Explore', temple:'🛕 Temple', view:'🌅 Viewpoint',
+    cafe:'☕ Café', shop:'🛍️ Shopping', rest:'😴 Rest', cook:'🧑‍🍳 Cooking', cable:'🚠 Cable Car',
+    pack:'🧳 Pack', default:'📌 Other',
+  };
+  return map[type] || '📌 Other';
+}
+
+// ═══════════════════════════════════════════════════════════════
+// RENDER ITINERARY
+// ═══════════════════════════════════════════════════════════════
+function renderItinerary() {
+  const container = document.getElementById('itinerary-container');
+  const daySelect = document.getElementById('f-day');
+  daySelect.innerHTML = '';
+
+  container.innerHTML = DEFAULT_DAYS.map(day => {
+    const blocks = (state.blocks[day.id] || []);
+    daySelect.innerHTML += `<option value="${day.id}">${day.label} — ${day.date} (${day.city})</option>`;
+
+    return `<div class="day-header">
+      <div class="day-label">
+        ${day.label}
+        <span class="day-badge badge-${day.badge}">${day.city}</span>
+        <span style="font-size:14px;color:var(--text-muted);font-family:var(--font-body);font-weight:400;">${day.date}</span>
+      </div>
+    </div>
+    <div class="timeblock-card" id="card-${day.id}">
+      ${blocks.map(b => renderBlock(b, day.id)).join('')}
+    </div>
+    <button class="add-block-btn" onclick="openAddBlock('${day.id}')">
+      <span style="font-size:16px">＋</span> Add time block to ${day.label}
+    </button>
+    <div style="margin-bottom:28px"></div>`;
+  }).join('');
+
+  // Setup drag & drop
+  document.querySelectorAll('.block-row[draggable]').forEach(row => {
+    row.addEventListener('dragstart', e => {
+      dragSrc = row;
+      row.classList.add('dragging');
+      e.dataTransfer.effectAllowed = 'move';
+    });
+    row.addEventListener('dragend', () => {
+      row.classList.remove('dragging');
+      document.querySelectorAll('.block-row').forEach(r => r.classList.remove('drag-over'));
+    });
+    row.addEventListener('dragover', e => {
+      e.preventDefault();
+      if (row !== dragSrc) {
+        document.querySelectorAll('.block-row').forEach(r => r.classList.remove('drag-over'));
+        row.classList.add('drag-over');
+      }
+    });
+    row.addEventListener('drop', e => {
+      e.preventDefault();
+      if (dragSrc && dragSrc !== row) {
+        const srcDayId = dragSrc.dataset.day;
+        const tgtDayId = row.dataset.day;
+        const srcId = dragSrc.dataset.id;
+        const tgtId = row.dataset.id;
+        if (srcDayId === tgtDayId) {
+          const arr = state.blocks[srcDayId];
+          const si = arr.findIndex(b=>b.id===srcId);
+          const ti = arr.findIndex(b=>b.id===tgtId);
+          if (si > -1 && ti > -1) {
+            arr.splice(ti, 0, arr.splice(si, 1)[0]);
+            saveState();
+            renderItinerary();
+            showToast('Reordered!');
+          }
+        }
+      }
+    });
+  });
+}
+
+function renderBlock(b, dayId) {
+  return `<div class="block-row" draggable="true" data-id="${b.id}" data-day="${dayId}">
+    <div class="block-time">${b.time}</div>
+    <div><div class="block-type ${blockTypeCss(b.type)}">${blockTypeLabel(b.type)}</div></div>
+    <div class="block-content">
+      <div class="block-activity">${b.activity}</div>
+      ${b.note ? `<div class="block-note">${b.note}</div>` : ''}
+    </div>
+    <div class="block-actions">
+      <button class="icon-btn drag-handle" title="Drag to reorder">⠿</button>
+      <button class="icon-btn" onclick="editBlock('${b.id}','${dayId}')" title="Edit">✎</button>
+      <button class="icon-btn del" onclick="deleteBlock('${b.id}','${dayId}')" title="Delete">✕</button>
+    </div>
+  </div>`;
+}
+
+// ═══════════════════════════════════════════════════════════════
+// ADD / EDIT BLOCKS
+// ═══════════════════════════════════════════════════════════════
+function openAddBlock(dayId) {
+  addingToDay = dayId || null;
+  editingBlock = null;
+  document.getElementById('modal-title').textContent = 'Add a Time Block';
+  document.getElementById('f-time').value = '';
+  document.getElementById('f-activity').value = '';
+  document.getElementById('f-note').value = '';
+  document.getElementById('f-type').value = 'default';
+  if (dayId) {
+    const sel = document.getElementById('f-day');
+    for (let i=0;i<sel.options.length;i++) {
+      if (sel.options[i].value === dayId) { sel.selectedIndex=i; break; }
+    }
+  }
+  openModal('add-block-modal');
+}
+
+function editBlock(blockId, dayId) {
+  const block = state.blocks[dayId].find(b=>b.id===blockId);
+  if (!block) return;
+  editingBlock = { blockId, dayId };
+  document.getElementById('modal-title').textContent = 'Edit Time Block';
+  document.getElementById('f-time').value = block.time;
+  document.getElementById('f-activity').value = block.activity;
+  document.getElementById('f-note').value = block.note || '';
+  document.getElementById('f-type').value = block.type;
+  const sel = document.getElementById('f-day');
+  for (let i=0;i<sel.options.length;i++) {
+    if (sel.options[i].value===dayId) { sel.selectedIndex=i; break; }
+  }
+  openModal('add-block-modal');
+}
+
+function saveBlock() {
+  const dayId = document.getElementById('f-day').value;
+  const time = document.getElementById('f-time').value.trim();
+  const type = document.getElementById('f-type').value;
+  const activity = document.getElementById('f-activity').value.trim();
+  const note = document.getElementById('f-note').value.trim();
+  if (!time || !activity) { showToast('Please fill in time and activity.'); return; }
+
+  if (editingBlock) {
+    // Update existing
+    const idx = state.blocks[editingBlock.dayId].findIndex(b=>b.id===editingBlock.blockId);
+    if (idx>-1) {
+      // If day changed, move it
+      if (editingBlock.dayId !== dayId) {
+        const block = state.blocks[editingBlock.dayId].splice(idx,1)[0];
+        block.time=time; block.type=type; block.activity=activity; block.note=note;
+        if (!state.blocks[dayId]) state.blocks[dayId]=[];
+        state.blocks[dayId].push(block);
+      } else {
+        state.blocks[editingBlock.dayId][idx] = { ...state.blocks[editingBlock.dayId][idx], time, type, activity, note };
+      }
+    }
+    showToast('Block updated!');
+  } else {
+    // Add new
+    if (!state.blocks[dayId]) state.blocks[dayId]=[];
+    state.blocks[dayId].push({ id:'b_'+Date.now(), time, type, activity, note });
+    showToast('Block added!');
+  }
+  saveState();
+  renderItinerary();
+  closeModal('add-block-modal');
+}
+
+function deleteBlock(blockId, dayId) {
+  if (!confirm('Remove this block?')) return;
+  state.blocks[dayId] = state.blocks[dayId].filter(b=>b.id!==blockId);
+  saveState();
+  renderItinerary();
+  showToast('Block removed.');
+}
+
+// ═══════════════════════════════════════════════════════════════
+// RESTAURANTS
+// ═══════════════════════════════════════════════════════════════
+function renderFoodGuide() {
+  const grid = document.getElementById('food-grid');
+  grid.innerHTML = state.restaurants.map(r => `
+    <div class="food-card">
+      <div class="fc-top">
+        <div>
+          <div class="fc-name">${r.name}</div>
+          <div class="fc-type">${r.type} · ${r.day}</div>
+        </div>
+        <div style="display:flex;gap:6px;align-items:center;flex-shrink:0;">
+          <span class="fc-city ${r.city==='Pokhara'?'city-pokh':'city-ktm'}">${r.city}</span>
+          <button class="tick-btn ${r.visited?'ticked':''}" onclick="toggleVisited('${r.id}')" title="${r.visited?'Visited!':'Mark as visited'}">✓</button>
+        </div>
+      </div>
+      <div class="fc-order"><strong>Order:</strong> ${r.order}</div>
+      <div class="fc-note">${r.note}</div>
+      <button class="icon-btn del food-del" onclick="deleteRestaurant('${r.id}')" title="Remove">✕</button>
+    </div>
+  `).join('');
+
+  const dishGrid = document.getElementById('dishes-grid');
+  dishGrid.innerHTML = DISHES.map(d => `
+    <div class="food-card">
+      <div class="fc-top">
+        <div class="fc-name">${d.emoji} ${d.name}</div>
+        <span style="font-size:11px;padding:3px 8px;border-radius:20px;background:var(--flight);color:#7A4D00;font-weight:500;">${d.spice}</span>
+      </div>
+      <div class="fc-type">${d.desc}</div>
+      <div class="fc-note">📍 ${d.where}</div>
+    </div>
+  `).join('');
+}
+
+function openAddRestaurant() {
+  ['r-name','r-type','r-order','r-note'].forEach(id => document.getElementById(id).value='');
+  openModal('add-restaurant-modal');
+}
+
+function saveRestaurant() {
+  const name = document.getElementById('r-name').value.trim();
+  const city = document.getElementById('r-city').value;
+  const day  = document.getElementById('r-day').value;
+  const type = document.getElementById('r-type').value.trim();
+  const order= document.getElementById('r-order').value.trim();
+  const note = document.getElementById('r-note').value.trim();
+  if (!name) { showToast('Please enter a restaurant name.'); return; }
+  state.restaurants.push({ id:'r_'+Date.now(), name, city, day, type, order, note, visited:false });
+  saveState();
+  renderFoodGuide();
+  closeModal('add-restaurant-modal');
+  showToast('Restaurant added!');
+}
+
+function deleteRestaurant(id) {
+  if (!confirm('Remove this restaurant?')) return;
+  state.restaurants = state.restaurants.filter(r=>r.id!==id);
+  saveState();
+  renderFoodGuide();
+  showToast('Removed.');
+}
+
+function toggleVisited(id) {
+  const r = state.restaurants.find(r=>r.id===id);
+  if (r) { r.visited=!r.visited; saveState(); renderFoodGuide(); }
+}
+
+// ═══════════════════════════════════════════════════════════════
+// TIPS & APPS
+// ═══════════════════════════════════════════════════════════════
+function renderTips() {
+  document.getElementById('apps-grid').innerHTML = APPS.map(a=>
+    `<div class="tip-card"><div class="tip-icon">${a.icon}</div><div><div class="tip-title">${a.name}</div><div class="tip-desc">${a.desc}</div></div></div>`
+  ).join('');
+  document.getElementById('watchouts-grid').innerHTML = WATCHOUTS.map(w=>
+    `<div class="tip-card"><div class="tip-icon">${w.icon}</div><div><div class="tip-title">${w.title}</div><div class="tip-desc">${w.desc}</div></div></div>`
+  ).join('');
+}
+
+
+// ═══════════════════════════════════════════════════════════════
+// NOTES
+// ═══════════════════════════════════════════════════════════════
+function renderNotes() {
+  const generalEl = document.getElementById('notes-general');
+  if (generalEl) generalEl.value = state.notes.general || '';
+
+  const container = document.getElementById('day-notes-container');
+  if (!container) return;
+  container.innerHTML = DEFAULT_DAYS.map(day => {
+    const val = (state.notes.days && state.notes.days[day.id]) || '';
+    return `<div class="day-note-item">
+      <div class="day-note-label">${day.date} — ${day.city}</div>
+      <textarea class="day-note-textarea" data-day="${day.id}" placeholder="Notes for ${day.label}..." oninput="saveNote('day', '${day.id}')">${val}</textarea>
+    </div>`;
+  }).join('');
+}
+
+let noteSaveTimeout = null;
+function saveNote(type, dayId) {
+  if (type === 'general') {
+    state.notes.general = document.getElementById('notes-general').value;
+    const ind = document.getElementById('notes-saved-general');
+    if (ind) ind.textContent = 'saving…';
+  } else {
+    const el = document.querySelector(`.day-note-textarea[data-day="${dayId}"]`);
+    if (el) {
+      if (!state.notes.days) state.notes.days = {};
+      state.notes.days[dayId] = el.value;
+    }
+  }
+  clearTimeout(noteSaveTimeout);
+  noteSaveTimeout = setTimeout(async () => {
+    await saveState();
+    const ind = document.getElementById('notes-saved-general');
+    if (ind) { ind.textContent = 'saved ✓'; setTimeout(() => { ind.textContent = ''; }, 2000); }
+  }, 600);
+}
+
+// ═══════════════════════════════════════════════════════════════
+// BUDGET — VARIABLE EXPENSES
+// ═══════════════════════════════════════════════════════════════
+
+const FIXED_SUBTOTAL = 149097; // IndiGo×2 + Yeti×2 + hotels
+
+function openAddExpense() {
+  document.getElementById('exp-detail').value = '';
+  document.getElementById('exp-amount').value = '';
+  document.getElementById('exp-category').selectedIndex = 0;
+  openModal('add-expense-modal');
+}
+
+function saveExpense() {
+  const category = document.getElementById('exp-category').value;
+  const detail   = document.getElementById('exp-detail').value.trim();
+  const amount   = parseInt(document.getElementById('exp-amount').value, 10);
+
+  if (!detail)       { showToast('Please enter a description.'); return; }
+  if (!amount || amount <= 0) { showToast('Please enter a valid amount.'); return; }
+
+  if (!state.expenses) state.expenses = [];
+  state.expenses.push({ id: 'e_' + Date.now(), category, detail, amount });
+  saveState();
+  renderBudget();
+  closeModal('add-expense-modal');
+  showToast('Expense added!');
+}
+
+function deleteExpense(id) {
+  if (!confirm('Remove this expense?')) return;
+  state.expenses = (state.expenses || []).filter(e => e.id !== id);
+  saveState();
+  renderBudget();
+  showToast('Expense removed.');
+}
+
+function fmtINR(n) {
+  return '₹' + n.toLocaleString('en-IN');
+}
+
+function renderBudget() {
+  const expenses = state.expenses || [];
+  const tbody    = document.getElementById('variable-tbody');
+  const empty    = document.getElementById('variable-empty');
+  const tableWrap = document.querySelector('#variable-table').parentElement;
+
+  if (!tbody) return;
+
+  if (expenses.length === 0) {
+    tableWrap.style.display = 'none';
+    empty.style.display = 'block';
+  } else {
+    tableWrap.style.display = '';
+    empty.style.display = 'none';
+    tbody.innerHTML = expenses.map(e => `
+      <tr>
+        <td>${e.category}<span class="mobile-detail">${e.detail}</span></td>
+        <td style="text-align:right;font-family:var(--font-serif);white-space:nowrap;">${fmtINR(e.amount)}</td>
+        <td style="text-align:center;">
+          <button class="icon-btn del" onclick="deleteExpense('${e.id}')" title="Remove">✕</button>
+        </td>
+      </tr>
+    `).join('');
+  }
+
+  const varTotal   = expenses.reduce((s, e) => s + e.amount, 0);
+  const grandTotal = FIXED_SUBTOTAL + varTotal;
+
+  const vs = document.getElementById('variable-subtotal');
+  const gt = document.getElementById('grand-total');
+  if (vs) vs.textContent = fmtINR(varTotal);
+  if (gt) gt.textContent = fmtINR(grandTotal);
+}
+
+// ═══════════════════════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════════════════════
+async function init() {
+  await initFirebase();
+  if (!state.expenses) state.expenses = [];
+  renderItinerary();
+  renderFoodGuide();
+  renderTips();
+  renderNotes();
+  renderBudget();
+}
+
+init();
+</script>
+</body>
+</html>
